@@ -74,3 +74,8 @@ Linking by index / coin-flip linking\
 	}
 	
 ```
+
+PROBLEM LINKS:\
+[LEETCODE WEEKLY 269 PROBLEM D](https://leetcode.com/contest/weekly-contest-269/problems/find-all-people-with-secret/)\
+[CODEFORCES DETLIX AUTUMN 2021 PROBLEM D](https://codeforces.com/contest/1609/problem/D)\
+
