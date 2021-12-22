@@ -45,7 +45,7 @@ COMPLEXITY: O(LOG2N)+2
         }
     return q-p;
     }
-    ```
+   ```
     
 PROBLEM LINKS:\
 [Codeforces 762 div 3  D](https://codeforces.com/contest/1619/problem/D)
