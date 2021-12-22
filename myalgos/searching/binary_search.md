@@ -1,4 +1,6 @@
 BINARY SEARCH:
+---
+COMPLEXITY: O(LOG2N)+2
 
    **PREREQUISITE**  \
    -> on a sorted container defined explicitly\
