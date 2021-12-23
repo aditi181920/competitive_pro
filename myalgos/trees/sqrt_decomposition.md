@@ -1,9 +1,6 @@
 SQRT DECOMPOSITION
 --
-Some common operations like\
-sum of elements of sub-array, finding max/min element, etc.\
-in O(sqrt(n)) operations\
-much faster than O(n) for trivial algorithm\
+reducing O(n) for trivial algos to O(sqrt(n))\
 IDEA: splitting the input requests in sqrt blocks of length sqrt(rounding up may be required)\
 
 ```cpp
@@ -39,5 +36,9 @@ One of the ideas for updating elements of array can be:\
 update blocks which lies completely inside range using a ds for that block requiring O(1) operation and for few elements lying outside 
 we can just update them manually as they can be around 2.sqrt(n) in worst case which is not very big
 
+Operations like:\
 -> kth largest number, adding /deleting elements, operation on subarray, check whether an element belongs to a set or not,
   finding no. of zero/non-zero elements, finding first non-zero element, counting element which satisfy a certain property
+
+**PROBLEM LINKS:** \
+[Codeforces Round 762 div 3](https://codeforces.com/contest/1619/problem/H)
