@@ -21,7 +21,7 @@ struct dsu{
         b= find_set(b);
         if(a!=b){
             if(s[a]<s[b]){
-                swap(a,b);
+                swap(a,b); //small to large rule : elements in smaller set have been added to set atleast double as large as previous which gaurantees that elements wont need to move more than logn times
             }
             p[b]=a;
             s[a]+=s[b];     //attaching lower rank tree to bigger one
