@@ -21,7 +21,8 @@ struct dsu{
         b= find_set(b);
         if(a!=b){
             if(s[a]<s[b]){
-                swap(a,b); //small to large rule : elements in smaller set have been added to set atleast double as large as previous which gaurantees that elements wont need to move more than logn times
+                swap(a,b); //small to large rule : elements in smaller set have been added to set atleast double as large as 
+		            //previous which gaurantees that elements wont need to move more than logn times
             }
             p[b]=a;
             s[a]+=s[b];     //attaching lower rank tree to bigger one
@@ -78,4 +79,5 @@ Linking by index / coin-flip linking\
 PROBLEM LINKS:\
 [LEETCODE WEEKLY 269 PROBLEM D](https://leetcode.com/contest/weekly-contest-269/problems/find-all-people-with-secret/)\
 [CODEFORCES DETLIX AUTUMN 2021 PROBLEM D](https://codeforces.com/contest/1609/problem/D)\
+[CODEFORCES EDU 119 DIV 2 E](https://codeforces.com/contest/1620/problem/E)\
 
