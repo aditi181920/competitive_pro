@@ -81,5 +81,4 @@ The small to large method used in dijoint set union can be used independently to
 PROBLEM LINKS:\
 [LEETCODE WEEKLY 269 PROBLEM D](https://leetcode.com/contest/weekly-contest-269/problems/find-all-people-with-secret/)\
 [CODEFORCES DETLIX AUTUMN 2021 PROBLEM D](https://codeforces.com/contest/1609/problem/D)\
-[CODEFORCES EDU 119 DIV 2 E](https://codeforces.com/contest/1620/problem/E)\
 
