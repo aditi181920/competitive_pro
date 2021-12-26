@@ -75,6 +75,8 @@ Linking by index / coin-flip linking\
 	}
 	
 ```
+IMPORTANT NOTE:
+The small to large method used in dijoint set union can be used independently to reduce complexity to O(nlogn) 
 
 PROBLEM LINKS:\
 [LEETCODE WEEKLY 269 PROBLEM D](https://leetcode.com/contest/weekly-contest-269/problems/find-all-people-with-secret/)\
