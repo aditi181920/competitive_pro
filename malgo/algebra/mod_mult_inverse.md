@@ -52,4 +52,4 @@ x obtained from extended euclidean may be negative that is why we add m
 	formula : inv[i] = - floor(m/i) . inv[m mod i] mod m
   this formula can be deduced from m mod i = m-floor(m/i).i
   HINT: taking mod m both sides and multiplying i^(-1).(m mod i)^(-1) both sides
-``sh
+```
