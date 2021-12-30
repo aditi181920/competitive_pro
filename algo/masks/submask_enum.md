@@ -4,7 +4,7 @@ SUBMASK ENUMERATION
 1. ENUMERATING ALL SUBMASKS OF A GIVEN MASK:
 ---
   -> let s be the current bitmask\
-  -> no go to next bitmask do s-1\
+  -> now go to next bitmask do s-1\
   -> rightmost bit set will be removed and all bits to the right of it will become one\
   -> cut this mask to the highest value it can take\
   -> this will be the next submask after s in descending order
@@ -12,7 +12,7 @@ SUBMASK ENUMERATION
   ```cpp
   for(int s=m;s;s=(s-1)&m)
     ..... use s .....
-  //note: if you want to use s when s =0 then u have to break it otherwise the algorithm will enter an infinite loop
+  //note: if you want to use s when s = 0 then u have to break it otherwise the algorithm will enter an infinite loop
   ```
   
 2. ITERATING THROUGH ALL MASKS WITH THEIR SUBMASKS
