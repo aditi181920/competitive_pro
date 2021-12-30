@@ -31,10 +31,10 @@ SUBMASK ENUMERATION
 
 1. FIRST
 ---
-Consider the ith bit. There are exactly there options for it:
-1. it is not included in the mask m (therefore not included in submask s),
-2. it is not included in m, but not included in s
-3. it is included both in m and s
+Consider the ith bit. There are exactly there options for it:\
+  --> it is not included in the mask m (therefore not included in submask s),\
+  --> it is not included in m, but not included in s\
+  --> it is included both in m and s
 
 2. SECOND
 ---
