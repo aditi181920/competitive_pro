@@ -41,7 +41,8 @@ this method not only works for numeral system(decimal, binary , hex, etc...) but
 i have to find digits for each weight such that i can form a number with this mixed based notation equivalent to some number *a*  \
 then i have to convert from base 10 to this mixed base \
 using the same conventions above i can easily convert *a* to a number with the given mixed base \
-->take mod with weight of the ith digit and divide that weight ... repeat this process
+->take mod with weight of the ith digit and divide that weight ... repeat this process\
+->mixed base notation of a should be like d4(x)(y)(z)+d3(x)(y)+d2(x)+d1
 
 NOTE:  operate on a-1 not a because a is some number that was counted (and counting starts from 1 not 0)\
        but numeral systems start from 0 so we have to subtract 1 to account for difference in convention
