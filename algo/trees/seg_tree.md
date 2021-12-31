@@ -75,8 +75,8 @@ IMPLEMENTATION:
   Left child: 2i+1\
   Right child: 2i+2
     
-=> we only need one array which contains result of all segments and the tree is defined implicitly/
--> there may be some elements in array which don't correspond to any vertices in the actual tree but that does not get in our way for implementation and is more convinient
+=> we only need one array which contains result of all segments and the tree is defined implicitly\
+-> there may be some elements in array which don't correspond to any vertices in the actual tree but that does not get in our way for implementation and is more convinient\
 -> we will go with 1 based indexig
 
 ```cpp
@@ -120,8 +120,8 @@ void update(int v, int tl, int tr, int pos, int new_val) {
 
 MEMORY OPTIMIZATION:
 ---
--> To deal with redundancy in this implementation which follows level order traversal:
--> we renumber the vertices of the tree in the order of an euler tour traversal (pre-order preorder traversal)
+-> To deal with redundancy in this implementation which follows level order traversal:\
+-> we renumber the vertices of the tree in the order of an euler tour traversal (pre-order preorder traversal)\
 -> 
                   
                      
