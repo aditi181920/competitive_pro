@@ -41,7 +41,7 @@ CONSTRUCTION:
 **TIME COMPLEXITY: O(n)**\
 -> the merge operation is constant time (it gets called n times, which is eq to the no. of internal nodes in the seg tree).
   
-QUERING SEGMENTS:
+QUERYING SEGMENTS:
 ---
   
 -> a[l..r] in O(log n) time\
