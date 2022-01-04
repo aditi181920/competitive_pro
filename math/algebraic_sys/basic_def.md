@@ -1,7 +1,7 @@
 BASIC DEFINITIONS:
 --
   
-  -> If S is a nonempty set. An operation on S is a function * from SxS into S denoted by (S,*). We usually write a*b\
+  -> If S is a nonempty set. An operation on S is a function * from SxS into S denoted by (S,\*). We usually write a\*b\
   -> An n-ary operation is a function from SxSxSx....xS(n factors) into S
   
   **1. PROPERTIES:**
