@@ -9,7 +9,7 @@ PERMUTATION GROUPS
    
    ba = 1  2  3  4  5               ab = 1  2  3  4  5
         2  3  4  5  1                    4  5  2  3  1
-     //permutation applide from right to left since ba => boa => i=(b(a(i)))
+     //permutation applide from right to left since ba => (b o a) => i=(b(a(i)))
 ```
 -> Symmetric group Sn - all permutations on A = {1,2,...,n} also known as the symmetric grp of degree n\
 -> function composition satisfies all group axioms\
