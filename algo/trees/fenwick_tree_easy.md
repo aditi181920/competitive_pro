@@ -47,7 +47,7 @@ so finding lowest set bit of i :  i &(-i)\
 1. COUNTING INVERSIONS:
 
 ```sh  
-	INVERSIONS: if i<j and a[i]> a[j] in a given permutation\
+	INVERSIONS: if i<j and a[i]> a[j] in a given permutation
 	example: 7,6,2,3,1,4,5
 ```    
   ```sh
