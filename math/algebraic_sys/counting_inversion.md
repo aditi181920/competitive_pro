@@ -1,0 +1,5 @@
+**COUNTING INVERSIONS IN AN ARRAY**
+--
+
+1. **BRUTE FORCE:**
+--
