@@ -203,12 +203,14 @@ int point_query(int idx) {
 -> after update (l,r,x) the range sum query returns:\
    **sum[0,i] = sum(B1,i).i-sum(B2,i)**\
    ----> this will return:
-  ``` 
+```sh 
    | 0.i-0            |  i<l  |
    | x.i-x.(l-1)      |l<=i<=r|
    | 0.i-(x.(l-1)-x.r)| i>r   |
 ```
+
 IMPLEMENTATION:
+
 ```cpp
 def add(b, idx, x):
     while idx <= N:
