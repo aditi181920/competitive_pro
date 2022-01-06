@@ -52,14 +52,14 @@ so finding lowest set bit of i :  i &(-i)\
 ```    
   ```sh
   
-       7 1                7 1                7 1                7 1                  7 1                  7 1                  7 1
-	   6 0                6 1                6 1                6 1                  6 1                  6 1                  6 1
-	   5 0                5 0                5 0                5 0                  5 0                  5 0                  5 1
-	   4 0                4 0                4 0                4 0                  4 0                  4 1                  4 1
-	   3 0                3 0                3 0                3 1                  3 1                  3 1                  3 1
-       2 0                2 0                2 1                2 1                  2 1                  2 1                  2 1
-	   1 0                1 0                1 0                1 0                  1 1                  1 1                  1 1
-    //sum=0          //sum=0+1         //sum=0+1+2       //sum=0+1+2+2     //sum=0+1+2+2+4     //sum=0+1+2+2+4+2  //sum=0+1+2+2+4+2+2
+       7 1              7 1              7 1              7 1                7 1                  7 1                  7 1
+	   6 0              6 1              6 1              6 1                6 1                  6 1                  6 1
+	   5 0              5 0              5 0              5 0                5 0                  5 0                  5 1
+	   4 0              4 0              4 0              4 0                4 0                  4 1                  4 1
+	   3 0              3 0              3 0              3 1                3 1                  3 1                  3 1
+       2 0              2 0              2 1              2 1                2 1                  2 1                  2 1
+	   1 0              1 0              1 0              1 0                1 1                  1 1                  1 1
+    //sum=0      //sum=0+1       //sum=0+1+2      //sum=0+1+2+2     //sum=0+1+2+2+4     //sum=0+1+2+2+4+2  //sum=0+1+2+2+4+2+2
  
    idea: for every element iterating from left to right add the no. of inversions corresponding to that element
 
@@ -71,8 +71,8 @@ so finding lowest set bit of i :  i &(-i)\
 ```sh	
 given listing of heights [1,10^6]
 
-	height	      |1	|2	|3	|4	|5	|6  |
-	no. of people	|8	|2	|10	|100|1	|2  |
+	height	        |1	|2	|3	|4	|5	|6  |
+	no. of people	|8	|2	|10	|100    |1	|2  |
 	
 	-> update h (height) # (quantity)
 	-> query kth tallest person [1, 10^18]
@@ -80,11 +80,9 @@ given listing of heights [1,10^6]
 	log(n).log(n) = O(log ^2 n)
 	b.search  query BIT
 ```
+	
+![image](https://user-images.githubusercontent.com/94597499/148382134-75977464-c201-4b41-8bbf-f1b5e2d943ff.png)
 
-	
-[WhatsApp Image 2022-01-06 at 17 35 40](https://user-images.githubusercontent.com/60195863/148380760-82fd4853-ffbb-4f26-8106-ee8eeacf8d57.jpeg)
-	
-	
 -> suppose we need to find 121 tallest person\
 -> we start with 16 = 16 10000\
 -> we find that 16 has 123 which is big so we go to next bit that is 1000 = 8\
