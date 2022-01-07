@@ -5,5 +5,7 @@ so map which are based on red-black trees are preferred\
 cautious as well
 -> pass things by reference in functions for speed uo if u can\
 -> div by const is well optimized by compilers\
--> computation of pre and post operators is done after encouter of semicolon. (so, value of a variable with pre post or none will be same until it encouters semicolon)
-->
+-> computation of pre and post operators is done after encouter of semicolon. (so, value of a variable with pre post or none will be same until it encouters semicolon)\
+-> vector takes more memory and time than array ... prefer array over vectors\
+-> declare variables globally if can\
+-> always pass by reference.. missing this out can actually cause a TLE when it should not\
