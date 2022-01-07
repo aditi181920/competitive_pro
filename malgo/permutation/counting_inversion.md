@@ -194,8 +194,115 @@ int main()
 **OPTIMIZED INVERSION COUNT ALGO:**
 ---
 -> the fenwick tree approach can be optimized further by combining it with the idea of sqrt decomposition.
-
-
+```cpp
+#pragma GCC optimize ("Ofast")
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+//const ll mod=1000000007;
+const ll mod=998244353;
+const int M=6e4;
+const int SQR=1005;
+const int N=3e5;
+//struct fen{
+	//vector<ll> bit;
+	ll bit[SQR][M]={0};
+	ll st[SQR],fin[SQR];
+	ll b[N];
+	//fen(int n){
+	//	bit.resize(n+1);
+	//	bit.resize(SQR,vector<ll> (M));
+//		b.resize(n+5);
+//		st.resize(SQR);
+//		fin.resize(SQR);
+//	}
+	void update(int b,int x,ll v){
+		for(int i=x;i<M;i+=(i&(-i))){
+			bit[b][i]+=v;
+		}
+	}
+	ll query(int b,int x){
+		ll ans=0;
+		for(int i=x;i>0;i-=(i&(-i))){
+			ans+=bit[b][i];
+		}
+		return ans;
+	}
+	ll range_query(ll l,ll r,ll x,vector<ll> &a){
+		int stblock=b[l],endblock=b[r];
+		ll ans=0;
+		for(int i=stblock;i<=endblock;i++){
+			if(st[i]>=l && fin[i]<=r){
+				ans+=query(i,x);
+			}else{
+				for(int j=max(st[i],l);j<=min(r,fin[i]);j++){
+					ans+=(a[j]<=x);
+				}
+			}
+		}
+		return ans;
+	}
+//};
+int main(){
+  //  int t;
+    fast_io;
+  //  cin>>t;
+  //  while(t--){
+        int n;
+        cin>>n;
+	//	fen bit(n+1);
+        vector<ll> a(n+1);
+		for(int i=1;i<=n;i++)cin>>a[i];
+		int bno=1;
+		for(int i=1;i<=n;){
+			int j=i;
+			st[bno]=j;
+			while(j<=n && j<i+SQR){
+				//cin>>a[j];
+				update(bno,a[j],1);
+				b[j]=bno;
+				j++;
+			}
+			fin[bno]=j-1;
+			bno++;
+			i=j;
+		}
+		ll cnt=0;
+		for(int i=n;i>=1;i--){
+			cnt+=query(0,a[i]-1);
+			update(0,a[i],1);
+		}
+		int q;
+		cin>>q;
+		while(q--){
+			ll x,y;
+			cin>>x>>y;
+			//first find no. of numbers greater than a[x] in 1 to x-1 
+			//eq to elements- no. of elements less than eq to a[x] in 1 to x-1
+			//then find no. of numbers leass than eq to a[x]-1 in x+1 to n
+			//remove these inversions from cnt
+			// again find same things after a[x]=y and add them in inversion cnt
+			ll g1=range_query(1,x-1,a[x],a);
+			g1=x-1-g1;
+			ll g2=range_query(x+1,n,a[x]-1,a);
+			cnt-=(g1+g2);
+			update(b[x],y,1);
+			update(b[x],a[x],-1);
+			a[x]=y;
+			g1=range_query(1,x-1,a[x],a);
+			g2=range_query(x+1,n,a[x]-1,a);
+			cnt+=(x-1-g1);
+			cnt+=g2;
+			cout<<cnt<<"\n";
+		}
+ 
+   // }
+    return 0;
+}
+```
 
 
 
