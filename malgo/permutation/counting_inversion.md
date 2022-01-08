@@ -189,6 +189,8 @@ int main()
     cout << getInvCount(arr,n);
     return 0;
 }
+
+COMPLEXITY: O(nlogn)
 ```
 
 **OPTIMIZED INVERSION COUNT ALGO:**
