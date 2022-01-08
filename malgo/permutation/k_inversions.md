@@ -111,7 +111,7 @@ long long int merge(vector<pair<ll,int>> &arr, long long int l,long long int q, 
     //        cnt+=((n1-1)-i+1);
 			add+=b[right[j].second];
 			add%=mod;
-			//nb[left[i].second]+=add; overcounting as this left will be probably inserted in else part or in next while loop
+			//nb[left[i].second]+=add; overcounting as this left will be probably inserted in else part or in next while
             arr[k]=right[j];
             j++;
             k++;
