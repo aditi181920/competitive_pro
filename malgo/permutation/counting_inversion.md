@@ -190,8 +190,52 @@ int main()
     return 0;
 }
 
-COMPLEXITY: O(nlogn)
+COMPLEXITY: O(nlogn) 
+UDP: actually complexity is O(n*n) since distance works in linear time for sets so this code might actually give a TLE 
+Alternative : use pbds ordered set and its functions
 ```
+-> Alternative optimized implementation
+```cpp
+#pragma GCC optimize ("Ofast")
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+typedef tree<ll, null_type, less_equal<ll>,
+             rb_tree_tag,
+             tree_order_statistics_node_update>
+    ordered_set;
+//const ll mod=1000000007;
+//const ll mod=998244353;
+const ll mod=1000000000;
+int main(){
+      int t;
+      fast_io;
+      cin>>t;
+      while(t--){
+		int n;
+		cin>>n;
+		ll cnt=0;
+		ll x;
+		ordered_set s;
+		for(int i=0;i<n;i++){
+			cin>>x;
+			s.insert(x); //now find number of elements greater than this inserted before
+			int key=s.order_of_key(x+1);
+			cnt+=s.size()-key;
+			//cnt+=s.end()-it;
+		}
+		cout<<cnt<<"\n";
+    }
+    return 0;
+}
+```
+
 
 **OPTIMIZED INVERSION COUNT ALGO:**
 ---
