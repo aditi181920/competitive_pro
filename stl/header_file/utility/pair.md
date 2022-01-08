@@ -1,4 +1,5 @@
 -> std:: pair is a struct template to store two objects\
+-> To declare a pair: pair<int, long long> a;\
 -> **accessing data member of pair:**
    
        -> simple access: a.first , a.second
