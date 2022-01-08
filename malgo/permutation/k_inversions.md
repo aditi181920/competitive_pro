@@ -68,3 +68,144 @@ int main(){
     return 0;
 }
 ```
+**USING MERGESORT:**
+```cpp
+the idea is somewhat the same
+for every merge we store in buffer the inversions that right element being merged will create with respect to 
+every left element being merged and add this buffer count to left elements being merged as that will be the
+total inversions that left element will be responsible for all the right elements being merged
+since in merge sort the way merges are done every smaller element will be compared with every element
+greater than it appearing left to it so this will work fine 
+also we have to store index because the item are getting rearranged so we must know its original index to update
+the the inversions with respect to element at that index 
+
+
+#pragma GCC optimize ("Ofast")
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+//const ll mod=1000000007;
+//const ll mod=998244353;
+const int mod=1e9;
+long long int merge(vector<pair<ll,int>> &arr, long long int l,long long int q, long long int r,ll b[],ll nb[]){
+    long long int cnt=0;
+    long long int n1=q-l+1,n2=r-(q+1)+1;
+    vector<pair<ll,int>> left(n1),right(n2);
+    int id=l;
+    for(int i=0;i<n1;i++){
+        left[i]=arr[id];
+        id++;
+    }
+    for(int i=0;i<n2;i++){
+        right[i]=arr[id];
+        id++;
+    }
+    long long int i=0,j=0,k=l,add=0;
+    while(i<n1 && j<n2){
+        if(left[i].first>right[j].first){
+	//		cout<<"l:"<<l<<"  q:"<<q<<"  r:"<<r<<"  i:"<<i<<"  j:"<<j<<"  b[j]:"<<b[j]<<"\n";
+	//		cout<<"leftid:"<<left[i].second<<" arr[q+1].idx:"<<arr[q+1].second<<"  rightid:"<<right[j].second<<"\n";
+    //        cnt+=((n1-1)-i+1);
+			add+=b[right[j].second];
+			add%=mod;
+			//nb[left[i].second]+=add; overcounting as this left will be probably inserted in else part or in next while loop
+            arr[k]=right[j];
+            j++;
+            k++;
+        }else{
+            arr[k]=left[i];
+			nb[left[i].second]+=add;
+			nb[left[i].second]%=mod;
+            i++;
+            k++;
+        }
+    }
+    while(i<n1){
+        arr[k]=left[i];
+		nb[left[i].second]+=add;
+		nb[left[i].second]%-mod;
+        k++;
+        i++;
+    }
+    while(j<n2){
+        arr[k]=right[j];
+        j++;
+        k++;
+    }
+    return cnt;
+}
+long long int mergesort(vector<pair<ll,int>> &arr,long long int l,long long int r,ll b[],ll nb[]){
+    long long int cnt=0;
+    if(l<r){
+        int q=(l+r)/2;
+        cnt+=mergesort(arr,l,q,b,nb);
+        cnt+=mergesort(arr,q+1,r,b,nb);
+        cnt+=merge(arr,l,q,r,b,nb);
+      //  cout<<"l:"<<l<<"  r:"<<r<<"  cnt:"<<cnt<<"\n";
+        return cnt;
+    }else return 0;
+}
+long long int inversionCount(vector<pair<ll,int>> &arr, long long int N,ll b[],ll nb[])
+{
+    // Your Code Here
+    return mergesort(arr,0,N-1,b,nb);
+    
+}
+
+int main(){
+  //  int t;
+      fast_io;
+  //  cin>>t;
+  //  while(t--){
+        int n;
+        cin>>n;
+		int k;
+		cin>>k;
+		vector<pair<ll,int>> a(n);
+		for(int i=0;i<n;i++){
+			cin>>a[i].first;
+			a[i].second=i;
+		}
+		ll b[n];
+		for(int i=0;i<n;i++)b[i]=1;
+	//	for(int i=0;i<n;i++)cout<<b[i]<<" ";
+		//cout<<"\n";
+		ll ans=0;
+		ll nb[n+1]; nb[n]=0;
+		vector<pair<ll,int>> aux(n);
+		//for(int i=0;i<=n;i++)nb[i]=0;
+		for(int i=2;i<=k;i++){
+			for(int i=0;i<n;i++){
+				nb[i]=0;
+			}
+			for(int i=0;i<n;i++){
+				aux[i]=a[i];
+			}
+			inversionCount(aux,n,b,nb);
+		//	cout<<"nb:";
+	//		for(int i=0;i<n;i++){
+	//			cout<<nb[i]<<" ";
+	//		} cout<<"\n";
+		//	for(int i=1;i<=n;i++){
+	//			nb[i]+=nb[i-1];
+//			}
+	      //  memset(b,0,sizeof(b));
+	        for(int i=0;i<n;i++){
+				b[i]=abs(nb[i]);
+			}
+	//		for(int i=0;i<n;i++){
+	//			cout<<b[i]<<" ";
+	//		} cout<<"\n";
+		}
+		for(int i=0;i<n-(k-1);i++){
+			ans+=abs(b[i]);
+			ans%=mod;
+		}
+		cout<<ans<<"\n";
+   //}
+    return 0;
+}
+```
