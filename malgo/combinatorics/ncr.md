@@ -49,3 +49,36 @@ ll ncr(ll n, ll r){
 	return ans;
 }
 ```
+-> though binary exponentiation has a complexity of logn which should be fast enough but in some cases this can lead to a high constant factor making it slow\
+-> in such cases we must use third way to find modular inverse which takes O(n)  time for preprocessing but can be answered in O(1)
+```cpp
+//const ll mod=1000000007;
+const ll mod=998244353;
+//const ll mod=1000000000;
+ll f[100000];
+ll inv[100000];
+ll finv[100000];
+void fact(ll n){
+	f[0]=1;
+	f[1]=1;
+	inv[1]=1;
+	finv[0]=finv[1]=1;
+    for(int i=2;i<1e5;i++){
+		f[i]=(f[i-1]*i);
+		f[i]%=mod;
+		inv[i]=mod-(mod/i)*inv[mod%i]%mod;
+		finv[i]=finv[i-1]*inv[i];
+		finv[i]%=mod;
+    }
+}
+ll ncr(ll n, ll r){
+	if(n<r || n<0 || r<0)return 0;
+	if(n==0 && r==0)return 1;
+	ll ans= f[n]*finv[r];
+	ans%=mod;
+	ans*=finv[n-r];
+	ans%=mod;
+	//cout<<"ans:"<<ans<<"\n";
+	return ans;
+}
+```
