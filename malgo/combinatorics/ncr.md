@@ -13,26 +13,39 @@
 
 **IMPLEMENTATION:**
 ```cpp
-ll fact(ll n){
-    ll ans=1;
-    for(int i=2;i<=n;i++){
-        ans=(ans*i)%mod;
-        ans%=mod;
+ll f[100000000];
+void fact(ll n){
+	f[0]=1;
+	f[1]=1;
+    for(int i=2;i<1e8;i++){
+		f[i]=(f[i-1]*i);
+		f[i]%=mod;
     }
-    return ans;
 }
 ll exp(ll n,ll p){
     ll ans=1;
-    while(p){
+	n%=mod;
+	if(p==0)return 1;
+	if(p==1)return n;
+    while(p>0){
         if(p&1){
-            ans=(ans*n)%mod;
+			ans*=n;
+			ans%=mod;
         }
-        n=n*n%mod;
+		n*=n;
+		n%=mod;
         p>>=1;
     }
     return ans;
 }
-ll ncr(ll tot, ll s){
-    return (((fact(tot)%mod)*(exp(fact(s)%mod,mod-2)%mod)%mod)*(exp((fact(tot-s)%mod),mod-2)%mod)%mod);
+ll ncr(ll n, ll r){
+	if(n<r || n<0 || r<0)return 0;
+	if(n==0 && r==0)return 1;
+	ll ans= f[n]*exp(f[r],mod-2);
+	ans%=mod;
+	ans*=exp(f[n-r],mod-2);
+	ans%=mod;
+	//cout<<"ans:"<<ans<<"\n";
+	return ans;
 }
 ```
