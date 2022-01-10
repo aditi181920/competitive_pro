@@ -1,3 +1,6 @@
+**OPTIMIZING DP WHERE U HAVE TO FIND MIN OR MAX OF CONSECUTIVE RANGES DECREASING FROM LEFT IN EVERY TRANSITION:**
+---
+
 -> lets say we have dp transition in which we have to find min/max for [j,i] range  for j=[1,i] for all previous dp states\
 -> for example:
 
