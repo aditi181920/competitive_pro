@@ -1,3 +1,5 @@
+**COMBINATORICS:**
+--
 1. [ABC 234 F](https://atcoder.jp/contests/abc234/tasks/abc234_f?lang=en)\
 -> find in a given string s how many diff string can be obtained as a permutation of a non-empty, not necessarily contiguous subsequence of S?\
 -> Solution: dp + combinatorics\
@@ -13,4 +15,12 @@
     dp[i][j] = summation(k=0 to min(j,freq[i]) dp[i-1][j-k] * jCk
 ```
 
+
+
+
+
+
+
+**SOME RANDOM DP PROBLEMS:**
+--
 2. [ABC 234 G](https://atcoder.jp/contests/abc234/tasks/abc234_g?lang=en)
