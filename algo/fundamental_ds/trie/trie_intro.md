@@ -97,3 +97,70 @@ public:
     }
 };
 ```
+**Example pointers inmplementation of trie:**
+```cpp
+#define ll long long int
+struct node{
+    ll freq;
+    node* child[26];
+    bool valid;
+};
+node *getnode(){
+    node* n=new node();
+    for(int i=0;i<26;i++){
+        n->child[i]=NULL;
+    }
+    n->valid=false;
+    n->freq=0;
+    return n;
+}
+class Trie {
+public:
+    map<ll,int> mark;
+    node *root;
+    Trie() {
+        root = getnode();
+    }
+    
+    void insert(string word) {
+        node *temp=root;
+        root->freq++;
+        for(int i=0;i<word.size();i++){
+            int d=word[i]-'a';
+            if(temp->child[d]==NULL){
+                temp->child[d]=getnode();
+            }
+            temp=temp->child[d];
+            temp->freq++;
+        }
+        temp->valid=true;
+    }
+    
+    bool search(string word) {
+        node *temp=root;
+        for(int i=0;i<word.size();i++){
+            int d=word[i]-'a';
+            if(temp->child[d]==NULL){
+                return false;
+            }
+            temp=temp->child[d];
+        }
+        if(temp->valid==true){
+            return true;
+        }
+        else return false;
+    }
+    
+    bool startsWith(string prefix) {
+        node *temp=root;
+        for(int i=0;i<prefix.size();i++){
+            int d=prefix[i]-'a';
+            if(temp->child[d]==NULL){
+                return false;
+            }
+            temp=temp->child[d];
+        }
+        return true;
+    }
+};
+```
