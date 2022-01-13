@@ -1,8 +1,8 @@
 **TRIE / PREFIX-TREE / NARY TREE / KEYWORD TREE:**
 --
 
--> Rooted tree typically used to store strings. \
--> each string starts at the root and each edge in the tree represents a single character
+-> Rooted tree typically used to store strings (can also store number or keys though). \
+-> each string starts at the root and each edge in the tree represents a single character ([or bit/digit)
 
 **STRUCTURE:**
 --
