@@ -44,30 +44,56 @@
 
 **Example 2d array implemetation of trie:**
 ```cpp
-let f be the matrix representation of your trie
+let triee be the matrix representation of your trie
+let triee[i] be the list of links for the k-th node
+let triee[i][x] = m, the node who represents the son of ith node using x-th character, m = 0 is there is not a link.
 
-let f[k] be the list of links for the k-th node
-
-let f[k][x] = m, the node who represents the son of k-th node using x-th character, m = -1 is there is not a link.
-
-int MAX = Max number of nodes
-int CHARSET = alphabet size
-int ROOT = 0
-int sz = 1;
-
-f[MAX][CHARSET]
-
-void init() {
- fill(f, -1);
-}
-
-void insert(char [] s) {
- int node = ROOT;
- for (int i = 0; i < size(s); i++) {
-   if ( f[node][ s[i] ] == -1 )
-      f[node][ s[i] ] = sz++;
-   node = f[node][ s[i] ];
- }
-}
-Notes: Root node is at f[0] sz is the numbers of nodes currently in trie
+#define ll long long int
+ll triee[1000000][26];
+class Trie {
+public:
+    ll tot;
+    map<ll,int> mark;
+    Trie() {
+        tot=2;
+        memset(triee,0,sizeof(triee));
+    }
+    void insert(string word) {
+        int node=1;
+        for(int i=0;i<word.size();i++){
+            int d=word[i]-'a';
+            if(triee[node][d]==0){
+                triee[node][d]=tot;   //inserting new node
+                tot++;
+            }
+            node=triee[node][d];   //going down the path
+        }
+        mark[node]=1;
+    }
+    bool search(string word) {
+        int node=1;
+        for(int i=0;i<word.size();i++){
+            int d=word[i]-'a';
+            if(triee[node][d]==0){
+                return false;
+            }
+            node=triee[node][d];
+        }
+        if(mark[node]==1){
+            return true;
+        }
+        else return false;
+    }
+    bool startsWith(string prefix) {
+        int node=1;
+        for(int i=0;i<prefix.size();i++){
+            int d=prefix[i]-'a';
+            if(triee[node][d]==0){
+                return false;
+            }
+            node=triee[node][d];
+        }
+        return true;
+    }
+};
 ```
