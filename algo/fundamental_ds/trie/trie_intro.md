@@ -60,7 +60,7 @@ public:
     }
     void insert(string word) {
         int node=1;
-        for(int i=0;i<word.size();i++){
+        for(int i=0;i<word.length();i++){
             int d=word[i]-'a';
             if(triee[node][d]==0){
                 triee[node][d]=tot;   //inserting new node
@@ -72,7 +72,7 @@ public:
     }
     bool search(string word) {
         int node=1;
-        for(int i=0;i<word.size();i++){
+        for(int i=0;i<word.length();i++){
             int d=word[i]-'a';
             if(triee[node][d]==0){
                 return false;
@@ -86,7 +86,7 @@ public:
     }
     bool startsWith(string prefix) {
         int node=1;
-        for(int i=0;i<prefix.size();i++){
+        for(int i=0;i<prefix.length();i++){
             int d=prefix[i]-'a';
             if(triee[node][d]==0){
                 return false;
@@ -125,7 +125,7 @@ public:
     void insert(string word) {
         node *temp=root;
         root->freq++;
-        for(int i=0;i<word.size();i++){
+        for(int i=0;i<word.length();i++){
             int d=word[i]-'a';
             if(temp->child[d]==NULL){
                 temp->child[d]=getnode();
@@ -138,7 +138,7 @@ public:
     
     bool search(string word) {
         node *temp=root;
-        for(int i=0;i<word.size();i++){
+        for(int i=0;i<word.length();i++){
             int d=word[i]-'a';
             if(temp->child[d]==NULL){
                 return false;
@@ -153,7 +153,7 @@ public:
     
     bool startsWith(string prefix) {
         node *temp=root;
-        for(int i=0;i<prefix.size();i++){
+        for(int i=0;i<prefix.length();i++){
             int d=prefix[i]-'a';
             if(temp->child[d]==NULL){
                 return false;
