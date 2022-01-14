@@ -13,3 +13,56 @@
 --> for XOR to be maximum we need to take dissimilar bits so if bi is 1 we need to go with a 0 and vice-versa if we can, if can't then go with what you can 
 
 --> Complexity: O(log2(maxn)*n)
+
+**IMPLEMENTATION:**
+```cpp
+#define ll long long int
+ll triee[1000000][2];
+class Solution {
+public:
+    int tot;
+    Solution(){
+        tot=2;
+        memset(triee,0,sizeof(triee));
+    }
+    void insert(ll x){
+        ll node=1;
+        for(int i=30;i>=0;i--){
+            int bit=(1<<i)&x;
+            if(bit>0)bit=1;
+            if(triee[node][bit]==0){
+                triee[node][bit]=tot;
+                tot++;
+            }
+           // cout<<"node:"<<node<<" bit:"<<bit<<" triee[node][bit]:"<<triee[node][bit]<<"\n";
+            node=triee[node][bit];
+        }
+    }
+    ll query(ll x){
+        ll node=1;
+        ll ans=0;
+        for(int i=30;i>=0;i--){
+            int bit=(1<<i)&x;
+            if(bit>0)bit=1;  // cout<<"node:"<<node<<" bit:"<<bit<<"\n";
+            if(triee[node][!bit]==0){
+                node=triee[node][bit];    // cout<<"no complemet| triee[node][bit]:"<<triee[node][bit]<<"\n";
+                ans+=((1<<i)*bit);        // cout<<"ans:"<<ans<<"\n";
+            }else{
+                node=triee[node][!bit];   //cout<<"complemet| triee[node][bit]:"<<triee[node][bit]<<"\n";
+                ans+=((1<<i)*(!bit));     //cout<<"ans:"<<ans<<"\n";
+            }
+        }
+        return ans;
+    }
+    int findMaximumXOR(vector<int>& nums) {
+        int n=nums.size();
+        ll ans=0;
+        for(int i=0;i<n;i++){ //cout<<"insert:\n";
+            insert(nums[i]);  //cout<<"query:\n";
+            ans=max(ans,query(nums[i])^nums[i]);
+        }
+        return ans;
+        
+    }
+};
+```
