@@ -3,6 +3,7 @@
 
 -> improvement of Bellman-Ford algorithm\
 -> it is also said that is is a combination of bfs+dijkstra\
+-> sssp\
 -> Idea: Not all attempts at relaxation works so we create a queue containing only the vertices that were relaxed but that still could further relax their neighbours\
 -> Whenever you relax a neighbour put him in the queue\
 -> This algo can be used to detect negative cycles as the Bellman - Ford
