@@ -129,4 +129,5 @@ void dijkstra(int s, vector<int> & d, vector<int> & p) {
 ---
 
 ->Actually we can go without sorting the queue but then it won't be be dijkstra's and then it will exhaustively search for all the edges and all possible improvements and nodes will get pushed then popped multiple times so it won't be efficient either.\
--> Also not sure to what extent it is correct though haven't found any counter example yet
+-> Also not sure to what extent it is correct though haven't found any counter example yet\
+-> ooo okay so if we use normal queue and push based on relaxations then it actually turns into spfa algorithm but it turns out that it doesn't have a good complexity because in worst case some node may get pushed n-1 times atmost 
