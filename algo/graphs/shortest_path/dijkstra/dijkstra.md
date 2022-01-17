@@ -39,7 +39,8 @@
 --
 -> depends on implementation\
 -> worst case: O(v^2) on bad implemetation\
--> worst case: O(vlogv + e) on good implemetation\
+-> worst case: O((v+e)logv) on good implemetation (v+e total traversals since we are traversing in sorted order we can say this and logv for updation) [in dense graph when e>>v then this is equivalent to O(elogv)]\
+-> worst case can be reduced to even smaller using fibonnaci heap though
 
 **6. IMPLEMENTATIONS:**
 --
