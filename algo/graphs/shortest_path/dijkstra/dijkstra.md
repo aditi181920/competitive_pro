@@ -124,3 +124,9 @@ void dijkstra(int s, vector<int> & d, vector<int> & p) {
 
 -> getting rid of pairs in set implementation can improve the performance but then u will have to overload comparision operator of set such that it compares two vertices using the distances stored in d[].
 
+
+**OBSERVATIONS:**
+---
+
+->Actually we can go without sorting the queue but then it won't be be dijkstra's and then it will exhaustively search for all the edges and all possible improvements and nodes will get pushed then popped multiple times so it won't be efficient either.\
+-> Also not sure to what extent it is correct though haven't found any counter example yet
