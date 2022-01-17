@@ -1,6 +1,7 @@
 **FLOYD WARSHALL:**
 --
 
+-> apsp\
 -> directed/undirected graph find shortest path dij between each pair of vertices i and j\
 -> The graph may have negative weight edges(only in directed graph) but no negative weight cycles [shortest path becomes undefined as path keeps reducing in every cycle and becomes arbitrarily small]\
 -> the above statement automatically means that an undirected graph cannot have any negative weight edges as that single edge alone forms a negative weight cycle and u can move back and forth along that edge as long as you like\
