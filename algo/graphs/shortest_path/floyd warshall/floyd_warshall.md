@@ -24,7 +24,7 @@
 
 **COMPLEXITY:**
 ---
-**O(n^3)**
+**O(n^3)**\
 -> this is quite effective for dense graph but for sparse graph Johnshon's algo is much more effective
 
 **IMPLEMENTATION:**
