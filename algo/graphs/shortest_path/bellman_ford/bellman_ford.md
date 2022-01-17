@@ -1,8 +1,10 @@
-**SINGLE SOURCE SHORTEST PATH WITH NEGATIVE WEIGHT EDGES:**
+**SINGLE SOURCE SHORTEST PATH WITH BOTH POSITIVE / NEGATIVE WEIGHT EDGES:**
 --
 
 -> COMPLEXITY: O(nm)
 -> can't be used on graph containing cycles\
+-> can be used with negative weight edges\
+-> but it won't give shortest path in case of negative weight cycle\
 -> but this algo can signal the presence of a cycle of negative wt/deduce this cycle
 
 **1. ALGO:**
