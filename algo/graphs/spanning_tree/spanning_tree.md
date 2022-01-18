@@ -1,5 +1,5 @@
 **SPANNING TREE:**
----I
+---
 
 -> In a weighted undirected graph, a spanning tree is such a subset of the given graph such that it contains all the vertices \
 -> A spanning tree is not necessarily unique\
