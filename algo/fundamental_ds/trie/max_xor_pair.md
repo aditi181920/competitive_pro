@@ -12,6 +12,12 @@
 --> let's say x is b1,b2,b3,... where bi is corresponding bits. \
 --> for XOR to be maximum we need to take dissimilar bits so if bi is 1 we need to go with a 0 and vice-versa if we can, if can't then go with what you can 
 
+
+![image](https://user-images.githubusercontent.com/94597499/150489701-3ba2dbd2-de00-4070-b238-c47680ec511f.png)
+
+![image](https://user-images.githubusercontent.com/94597499/150489718-9463c0d3-db54-4c25-9a3b-d4f4eea72c87.png)
+
+
 --> Complexity: O(log2(maxn)*n)
 
 **IMPLEMENTATION:**
