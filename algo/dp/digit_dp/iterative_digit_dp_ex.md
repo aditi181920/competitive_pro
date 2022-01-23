@@ -18,7 +18,7 @@
 ---> z : max possible sum of digits of a number
 
 -> dp[i][0][sum] : count of suffixes that can be formed starting from index i, whose digits add up to the sum\
--> dp[i][0][sum] : count of suffixes that can be formed starting from index i, whose digits add up to the sum such that the formed suffix is greater than corresponding suffix in i/p string 
+-> dp[i][1][sum] : count of suffixes that can be formed starting from index i, whose digits add up to the sum such that the formed suffix is not greater than corresponding suffix in i/p string 
 
 -> **BASE CASES:** dp[n][0][0] = dp[n][1][0] = 1 [there exists 1 empty suffix with sum of its digits = 0]
 
