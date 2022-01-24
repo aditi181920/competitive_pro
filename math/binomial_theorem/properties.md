@@ -32,3 +32,7 @@
 --> becoz this is just choosing all possible subsets
 
 9. (<sup>n</sup> C <sub>k</sub>) = (<sup>n</sup> C <sub>n-k</sub>)
+
+10. summation(k=0 to n-j) (<sup>m-1+k</sup> C <sub>m-1</sub>)(<sup>n-m-k</sup> C <sub>j-m</sub>) = (<sup>n</sup> C <sub>j</sub>)\
+--> RHS: how many sequence a1<a2<....<aj an be chosen from {1,2,...,n} differently\
+--> LHS: Let's say we fixed some mth number. This mth number can now lie in the range {m,m+1,....n-j+m}. So for each value of k+m of a<sub>m</sub>, there are (<sup>m-1+k</sup> C <sub>m-1</sub>) choices of a1<...<a<sub>m-1</sub> and (<sup>n-m-k</sup> C <sub>j-m</sub>) choices of a<sub>m+1</sub><.....<a<sub>j</sub> 
