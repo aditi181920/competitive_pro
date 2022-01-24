@@ -24,3 +24,6 @@
 --> Let A={x1,x2,...,xm} and B={y1,y2,...yn} be disjoint set\
 --> RHS: no. of subsets of size r, counted directly\
 --> LHS: specifies k, the no. of elements chosen from A ((<sup>m</sup> C <sub>k</sub>) ways) and remaining r-k elements from B ((<sup>n</sup> C <sub>r-k</sub>) ways)
+
+7. (GAUSS'S TRICK) summation (r=0 to n) r.(<sup>n</sup> C <sub>r</sub>) = summation(r=0 to n) (n-r)(<sup>n</sup>C <sub>n-r</sub>) \
+--> can be proved since binomial coefficients are symmetric
