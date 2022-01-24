@@ -29,3 +29,4 @@
 --> can be proved since binomial coefficients are symmetric
 
 8. summation (k=0 to n) (<sup>n</sup>C<sub>k</sub>) = 2^n
+--> becoz this is just choosing all possible subsets
