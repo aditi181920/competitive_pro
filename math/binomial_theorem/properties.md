@@ -27,3 +27,5 @@
 
 7. (GAUSS'S TRICK) summation (r=0 to n) r.(<sup>n</sup> C <sub>r</sub>) = summation(r=0 to n) (n-r)(<sup>n</sup>C <sub>n-r</sub>) \
 --> can be proved since binomial coefficients are symmetric
+
+8. summation (k=0 to n) (<sup>n</sup>C<sub>k</sub>) = 2^n
