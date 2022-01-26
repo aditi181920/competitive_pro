@@ -57,3 +57,5 @@
 5. #pragma once:\
 -> If #pragma once is seen when scanning a header file, that file will never be read again, no matter what.\
 -> It is a less-portable alternative to using ‘#ifndef’ to guard the contents of header files against multiple inclusions.
+
+
