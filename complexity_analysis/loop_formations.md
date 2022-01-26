@@ -13,3 +13,8 @@ the pattern of number of times inner loop runs is:\
 n+n/2+n/3+n/4+n/5+n/6+.....+n/n\
 n(1+1/2+1/3+1/4+1/5+....+1/n)\
 slightly greater than nlogn but enough to pass for n<=1e6
+
+**PROBLEM LINK:**
+--
+[Finding max GCD pair GFG](https://practice.geeksforgeeks.org/problems/maximum-gcd-pair3534/1#)\
+[CF 766 DIV 2](https://codeforces.com/contest/1627/problem/D)
