@@ -65,3 +65,10 @@ RELATION BETWEEN GCD AND LCM
 ```sh
 lcm(a,b)*gcd(a,b) = a*b
 ```
+
+
+**THINGS TO KNOW:**
+--
+-> gcd(a,b) = gcd(a-b,b) [a>b] (as if g divides a and g divides b then g divides a-b and since g is gcd of (a,b) it will definitely be gcd(a-b,a))\
+-> so it kind of boils down to least number achievable on subtraction will give gcd (its visible on visuaizing the working of the algorithm)
+
