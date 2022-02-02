@@ -58,4 +58,8 @@ void sliding_window_minimum(std::vector<int> & ARR, int K) {
   }
 }
 ```
+
+**IMPORTANT NOTES:**
+
+--> this sliding window minimum algo can be modified to make sliding window maximum (in the above algo we can do it by flipping >= to <=)\
 --> deque supports constant time insertion, removal and lookups at the front and back of the queue
