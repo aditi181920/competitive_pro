@@ -52,13 +52,14 @@ An example of a compound literal is (edge) { t, c } where t and c are expression
 
 5. **BIT MANIPULATION:**
 ---
-Although C++ provides the bitset template to efficiently manipulate sets of bits, there are some things that can be done within an integral type that cannot be done so easily with a bitset. 
-For example, the lowest bit of an integer x can be cleared by x &= x - 1. 
-The x86 instruction set provides some special instructions for doing some types of bit manipulation, and GCC provides pseudo-functions that generate these instructions:
-__builtin_ctz(unsigned int x)
-Counts the number of trailing zero bits. This is one less than the POSIX function ffs (which GCC also implements using the special x86 instruction).
-__builtin_clz(unsigned int x)
-Counts the number of leading zero bits. Note that GCC docs state that both of these functions are undefined if x is 0. Experimenting on my Athlon 64 with GCC 3.4 gives values of 0 and 31 respectively with -O2, but nonsense values when compiled without optimisation. Don't rely on any particular value.
-__builtin_popcount(unsigned int x)
-Counts the total number of one bits in x. Note that x86 does not have an instruction to do this, so you end up calling a real function; however, this is still more convenient than having to write the function yourself.
-These functions also have variants with ll appended to the function name, that takes unsigned long long rather than unsigned int.
+Although C++ provides the bitset template to efficiently manipulate sets of bits, there are some things that can be done within an integral type that cannot be done so easily with a bitset. \
+For example, the lowest bit of an integer x can be cleared by x &= x - 1. \
+
+The x86 instruction set provides some special instructions for doing some types of bit manipulation, and GCC provides pseudo-functions that generate these instructions:\
+__builtin_ctz(unsigned int x)\
+Counts the number of trailing zero bits. This is one less than the POSIX function ffs (which GCC also implements using the special x86 instruction).\
+__builtin_clz(unsigned int x)\
+Counts the number of leading zero bits. Note that GCC docs state that both of these functions are undefined if x is 0. Experimenting on my Athlon 64 with GCC 3.4 gives values of 0 and 31 respectively with -O2, but nonsense values when compiled without optimisation. Don't rely on any particular value.\
+__builtin_popcount(unsigned int x)\
+Counts the total number of one bits in x. Note that x86 does not have an instruction to do this, so you end up calling a real function; however, this is still more convenient than having to write the function yourself.\
+These functions also have variants with ll appended to the function name, that takes unsigned long long rather than unsigned int.\
