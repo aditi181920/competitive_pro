@@ -15,3 +15,10 @@ non empty set of vertices and possibly empty set of edges
 **ACYCLIC:** Presence of no cycles\
 **DIRECTED GRAPH:** Unidirectional edges\
 **UNDIRECTED GRAPH:** Bidirectional edges
+
+**PATHS AND CIRCUITS:**
+---
+**EULER PATH:** Visits every edge exactly once (exists when zero or two vertices with odd degree in the graph)\
+**EULER CIRCUIT:** Euler path with same starting and ending vertex (exists when all vertices with even degree)\
+**HAMILTONIAN PATH:** Visits every vertex exactly once\
+**HAMILTONIAN CIRCIUT:** Hamiltonian path with same starting and ending vertex
