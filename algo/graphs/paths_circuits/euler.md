@@ -11,7 +11,9 @@
 --> If there are 0 odd vertices, start anywhere. If there are 2 odd vertices, start at one of them\
 --> Follow edges one at a time. If you have a choice between a bridge and a non-bridge, always choose the non-bridge  \
 --> This is quite an inefficient solution though (as finding bridges takes up extra time increasing time complexity)\
---> This algorithm always work becoz it won't terminate on small eulerian graphs present inside ever as if it does then that node will get disconnected from rest of the graph hence making that edge as bridge so that edge won't be deleted at all.
+--> This algorithm always work becoz it won't terminate on small eulerian graphs present inside ever as if it does then that node will get disconnected from rest of the graph hence making that edge as bridge so that edge won't be deleted at all.\
+--> Naive approach of finding bridges is running dfs from the latest reach node and see if all other graph components are connected\
+--> There is a linear algorithm for this though [Tarjan's bridge-finding algo](https://www.wikiwand.com/en/Bridge_(graph_theory))
 
 2.**HIERHOLZER'S ALGORITHM:**
 --
