@@ -37,3 +37,7 @@ bool cmp(array<int,3>x,array<int,3>y)
 	return x[0]<y[0];
 }
 ```
+
+**PROBLEM LINKS:**
+---
+[ABC 238 G](https://atcoder.jp/contests/abc238/tasks/abc238_g?lang=en)
