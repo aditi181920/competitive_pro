@@ -34,6 +34,8 @@ Hence, the algorithm will go through every composite number exactly once, settin
 IMPLEMENTATION:
 ---
 ```cpp
+IMPLEMENTATION1:
+
 const int N = 10000000;
 vector<int> lp(N+1);
 vector<int> pr;
@@ -49,6 +51,8 @@ for (int i=2; i <= N; ++i) {
 }
 ```
 ```cpp
+IMPLEMENTATION 2:
+
 for(int i=2;i<=1000000;i++)
 	{
 		if(!pri[i])
