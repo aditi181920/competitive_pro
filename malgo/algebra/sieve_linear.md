@@ -48,7 +48,21 @@ for (int i=2; i <= N; ++i) {
     }
 }
 ```
-
+```cpp
+for(int i=2;i<=1000000;i++)
+	{
+		if(!pri[i])
+			v.push_back(i);
+		for(int l:v)
+		{
+			if(i*l>1000000)
+				break;
+			pri[i*l]=1;
+			if(i%l==0)
+				break;
+		}
+	}
+ ```
 
 RUNTIME:
 ---
