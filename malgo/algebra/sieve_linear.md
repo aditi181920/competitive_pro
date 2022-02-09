@@ -34,7 +34,7 @@ Hence, the algorithm will go through every composite number exactly once, settin
 IMPLEMENTATION:
 ---
 ```cpp
-IMPLEMENTATION1:
+IMPLEMENTATION 1:
 
 const int N = 10000000;
 vector<int> lp(N+1);
