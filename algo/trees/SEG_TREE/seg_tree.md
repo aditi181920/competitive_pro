@@ -123,6 +123,11 @@ MEMORY OPTIMIZATION:
 -> To deal with redundancy in this implementation which follows level order traversal:\
 -> we renumber the vertices of the tree in the order of an euler tour traversal (pre-order preorder traversal)\
 -> 
+
+**PROBLEM LINKS:**
+--
+
+[CF 672 DIV2](https://codeforces.com/contest/1420/problem/C2)
                   
                      
           
