@@ -23,7 +23,7 @@
 ---
 
 -> After ith phase execution, the algo correctly finds all shortest paths whose number of edges does not exceed i\
--> For any vertex a if k number of edges is in the shortest path to it, the algo guarantees that after kth phase shortest path for vertex a will be found
+-> For any vertex a if k number of edges is in the shortest path to it, the algo guarantees that after kth phase shortest path for vertex a will be found\
 -> starting vertex v and ending vertex a ... path goes like (po=v, p1,...,pk=a). \
 -> Before 1st phase , po=v was found correctly then during 1st phase edge (po,p1) has been checked by the algorithm and then the distance to the vertex p1 was correctly calculated after 1st phase.\
 -> after kth phase distance to vertex pk=a gets calculated correctly\
