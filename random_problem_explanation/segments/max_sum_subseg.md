@@ -180,3 +180,9 @@ vector<int> pre, suf;
 COMPLEXITY: O(n)
 ```
 -> But this is kinda overkill because after computing pre we can find max subaaray from that only 
+
+
+**PROBLEMS:**
+--
+
+[EDU 123 DIV2](https://codeforces.com/contest/1644/problem/C)
