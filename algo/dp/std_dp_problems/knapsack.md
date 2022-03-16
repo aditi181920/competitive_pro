@@ -1,7 +1,7 @@
 **KNAPSACK:**
 --
 Given N items and a knapsack of size W. Every item has a weight wi and profit pi associated with it (1<=i<=N).\
-We can select some items from the list such that total weight does not exceed knapsack capacity and profit is max\
+We can select some items from the list such that total weight does not exceed knapsack capacity and profit is max
 
 **FRACTIONAL KNAPSACK:**
 -- 
@@ -99,5 +99,23 @@ int main()
     cout << f[n][w];
     return 0;
 }
+```
+
+**OPTIMIZING SPACE:**
+--
+-> Notice that we are only using i-1 th row for updating values of ith row
+-> So either we can maintain 2 row dp's : dp and newdp and update newdp for ith row using dp table values which belong to i-1 th row and then assign newdp to dp
+-> Or we can optimize further by just taking 1 dp row table but iterating from w to 0 (instead of 0 to w) 
+
+
+**GOOD CF BLOG:**
+---
+[KNAPSACK CF BLOG](https://codeforces.com/blog/entry/88660)
+
+**PROBLEM LINKS:**
+--
+
+[CF 776 DIV 3](https://codeforces.com/contest/1650/problem/F) 
+
 
    
