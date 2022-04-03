@@ -24,3 +24,5 @@ Note: This is strictly increasing subsequence
 For finding increasing subsequence take upper_bound instead of lower_bound and we are done
 ```
 
+**PROBLEM LINKS:**
+[STARTTERS 30 DIV 2 2022](https://www.codechef.com/START30B/problems/MLIS)
