@@ -53,3 +53,30 @@ x obtained from extended euclidean may be negative that is why we add m
   this formula can be deduced from m mod i = m-floor(m/i).i
   HINT: taking mod m both sides and multiplying i^(-1).(m mod i)^(-1) both sides
 ```
+
+**APPLICATIONS:**
+--
+
+1. Factorial Inverse
+```cpp
+
+vector<ll> fact(1005);
+vector<ll> inv(1005);
+vector<ll> invfact(1005);
+void modinv(){
+    fact[0]=1;
+    fact[1]=1;
+    inv[0]=1;
+    inv[1]=1;
+    invfact[1]=1;
+    invfact[0]=1;
+    for(int i=2;i<1005;i++){
+        fact[i]=i*fact[i-1];
+        fact[i]%=mod;
+        inv[i]=(mod-(mod/i)*inv[mod%i] %mod)%mod;
+        invfact[i]=inv[i]*invfact[i-1];
+        invfact[i]%=mod;
+    }
+}
+Note: Cross verification required
+```
