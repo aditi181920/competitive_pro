@@ -1,6 +1,6 @@
 **DETECTING CYCLE IN A GRAPH:**
 --
-**1. Using dfs**
+**1. Using dfs (FLOYD ALGO/TORTOISE/HARE ALGORITHM**
 
 If we visit a node again in current ongoing depth then there exists a cycle but if we visit visited nodes through different depths then that does not indicate cycle
 ```cpp
