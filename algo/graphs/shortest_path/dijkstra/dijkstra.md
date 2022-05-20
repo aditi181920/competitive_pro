@@ -1,4 +1,4 @@
-**SINGLE SOURCE SHORTEST PATH ON DIRECTED/UNDIRECTED GRAPH WITH NON NEGATIVE WEIGHTS**
+**SINGLE SOURCE SHORTEST PATH ON DIRECTED/UNDIRECTED GRAPH WITH NON NEGATIVE WEIGHTS (MULTIPLE DESTINATIONS)**
 --
 -> sssp
 
@@ -14,10 +14,10 @@
 -> At each iteration a vertex v is chosen as unmarked vertex which has the least value d[v]\
 -> The selected vertex v is marked \
 -> From vertex v relaxations are performed: all edges of the form (v,t) are considered and for each vertex t the algo tries to improve the value d[t].\
--> d[t] = min(d[t],d[v]+len) //len=length of current edge(v->t)
--> after n iterations the values of d[v] are length of shortest path from s to all vertices v.
+-> d[t] = min(d[t],d[v]+len) //len=length of current edge(v->t)\
+-> after n iterations the values of d[v] are length of shortest path from s to all vertices v.\
 -> unreachable vertex will have infinity after algo ends and even where they are selected in some iterations no useful work will be done since there is no adjacent edge present\
--> so we can break once we have found some unreachable vertex \
+-> so we can break once we have found some unreachable vertex 
 
 **3. RESTORING THE SHORTEST PATH:**
 --
@@ -51,7 +51,7 @@
 -> can use set to store d[] \
 -> use pair : distance, index of vertex \
 -> pairs will get automatically sorted by their distances\
--> we can just remove vertices already marked from this set so we won't need u[] either\
+-> we can just remove vertices already marked from this set so we won't need u[] either
 
 ```cpp
 const int INF = 1000000000;
