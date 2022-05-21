@@ -252,3 +252,159 @@ int main(){
 }
 ```
 
+**USING SET IMPLEMENTATION:**
+--
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+#define mp make_pair
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+const ll big=2000000000;
+const ll inf=10000000;
+ll llmx=1e15;
+ll llmn=-1e15;
+int mn=-1e8;
+int mx=1e8;
+const ll mod =998244353;
+//const ll mod=1000000007;
+ll limit=20000001;
+//const ll N=200005;
+const ld pi=3.1415926535;
+#define mp make_pair
+ll binexp(ll a,ll b){
+    ll res=1;
+    while(b>0){
+        if(b&1){
+            res*=a;
+            res%=mod;
+        }
+        a*=a;
+        a%=mod;
+        b>>=1;
+    }
+    return res;
+}
+bool cmp(int x,int y){
+    if(1) return true;
+    else return false;
+}
+multiset<int,decltype(&cmp)> ms(&cmp);
+ 
+ 
+void dfs(int node,vector<vector<pair<int,int>>> &g,vector<bool> &vis){
+    vis[node]=true;
+    for(auto x:g[node]){
+        if(!vis[x.first]){
+            dfs(x.first,g,vis);
+        }
+    }
+}
+int main(){
+    fast_io;
+    int t;
+   // cin>>t;
+   t=1;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        int q;
+        cin>>q;
+        vector<ll> d(n+2,llmx);
+        vector<pair<pair<int,int>,int>> edg;
+        vector<vector<pair<int,int>>> g(n+2);
+        for(int i=0;i<m;i++){
+            ll x,y,c;
+            cin>>x>>y>>c;
+            if(x==y)continue;
+            edg.emplace_back(mp(mp(x,y),c));
+            g[x].emplace_back(mp(y,c));
+            g[y].emplace_back(mp(x,c));
+        }
+        m=edg.size();
+        vector<bool> vis(n+2,false);
+        int s=n+1;
+        d[s]=0;
+        for(int i=1;i<=n;i++){
+            if(!vis[i]){
+                dfs(i,g,vis);
+                edg.emplace_back(mp(mp(i,s),0));
+            }
+        }
+        for(int k=0;k<n-1;k++){
+            for(auto x:edg){ 
+                if(d[x.first.first]==llmx)continue;
+                if((d[x.first.first]+x.second)<d[x.first.second]){
+                    d[x.first.second]=d[x.first.first]+x.second;
+                }
+            }
+        }
+        //now we have potentials 
+        //reweight each edge using potention
+        //increase potential at incoming and dec at outgoing
+        //w(u,v) = w(u,v)+p(u)-p(v)
+        for(auto &x:edg){
+            x.second=x.second+d[x.first.first]-d[x.first.second];
+        }
+        //now we don't have any negative edge weight
+        //do dijkstra on every node
+        ll ans[n+1][n+1];
+        for(int i=0;i<n+1;i++){
+            for(int j=0;j<n+1;j++){
+                ans[i][j]=0;
+            }
+        }
+        for(int i=1;i<=n;i++){ 
+            //using i as source
+            ll dis[n+2];
+            for(int i=0;i<n+2;i++){
+                dis[i]=llmx;
+            }
+            dis[i]=0;
+            set<pair<ll,ll>> q;
+            q.insert(mp(0,i));
+            while(!q.empty()){
+                int p=q.begin()->second;
+                ll dd=q.begin()->first;
+                q.erase(q.begin());
+                if(dd!=dis[p])continue;
+                for(auto x:g[p]){
+                    if(dis[x.first]> dis[p]+x.second){
+                        q.erase(mp(dis[x.first],x.first));
+                        dis[x.first]=dis[p]+x.second;
+                        q.insert(mp(dis[x.first],x.first));
+                    }
+                }
+            }
+            //store these values
+            for(int j=1;j<=n;j++){
+                if(i==j){
+                    ans[i][j]=0;
+                }else{
+                    ans[i][j]=dis[j];
+                }
+            }
+        }
+        //convert distance back acc to original problem
+        for(auto &x:edg){
+            x.second=x.second-d[x.first.first]+d[x.first.second];
+        }
+        //now answer queries however
+ 
+        while(q--){
+            int x,y;
+            cin>>x>>y;
+            if(ans[x][y]==llmx){
+                cout<<"-1\n";
+            }else{
+                cout<<ans[x][y]<<"\n";
+            }
+        }
+    }
+    return 0;
+}
+```
