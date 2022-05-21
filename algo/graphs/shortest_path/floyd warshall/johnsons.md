@@ -1,3 +1,18 @@
+**CONCEPT OF REWEIGHING:**
+--
+Let's assume for simplicity, there are no mulitple edges and loops between the same pair of nodes in the same direction.\
+Dijkstra's algorithm does not work very well for negative weight edges, so typically BellMan ford is used which has a worse time complexity.\
+One idea to deal with negative edges is to "reweigh" the graph so that all weights are non-negative, and it still encodes the information of shortest paths in the original graph.\
+We can't replace the weights with whatever we want.\
+One way to modify the weights is to pick a vertex v, increase the weights of the incoming edges to v by some real value x, and decrease the weights of the outgoing edges from v by the same amount x. This way path that goes through v will have the same weight as before.\
+So only affected paths are the ones that begin or end at v. But any such path will just be offset by x, and a shortest path will remain shortest.\
+Now we want to apply this kind of vertex offset for all vertices independently in such a way that all the new weights are non-negative.
+
+**DEFINITION:**
+--
+A function p:V->R is called a potential of graph G if for every edge (u->v) belongs to E, it holds that w(u->v)+p(u)-p(v) >=0
+
+
 **JOHNSON'S ALGORITHM:**
 ---
 -> apsp\
