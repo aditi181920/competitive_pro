@@ -65,3 +65,80 @@ if (d[i][k] + d[k][j] < d[i][j] - EPS)
 -> be careful of integer overflows as it can go beyond some -inf... better to limit min dist by some defined -inf
 
 
+**IMPLEMENTATION:**
+--
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+#define mp make_pair
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+const ll big=2000000000;
+const ll inf=10000000;
+ll llmx=1e15;
+ll llmn=-1e15;
+int mn=-1e8;
+int mx=1e8;
+const ll mod =998244353;
+//const ll mod=1000000007;
+ll limit=20000001;
+//const ll N=200005;
+const ld pi=3.1415926535;
+#define mp make_pair
+bool cmp(int x,int y){
+    if(1) return true;
+    else return false;
+}
+multiset<int,decltype(&cmp)> ms(&cmp);
+ 
+int main(){
+    fast_io;
+    int t;
+   // cin>>t;
+   t=1;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        int q;
+        cin>>q;
+        vector<vector<ll>> d(n+1,vector<ll> (n+1,llmx));
+        for(int i=0;i<m;i++){
+            ll x,y,c;
+            cin>>x>>y>>c;
+            if(x==y)continue;
+            d[x][y]=min(d[x][y],c);
+            d[y][x]=min(d[y][x],c);
+        }
+        //n=500 m=250000 and we need to find path distance between every 2 pair we can possibly find
+        //can easily use any all pair shortest path algorithm
+        //using floyd warshall
+        for(int k=1;k<=n;k++){
+            for(int i=1;i<=n;i++){
+                for(int j=1;j<=n;j++){
+                    if(d[i][k]<llmx && d[k][j]<llmx){
+                        d[i][j]=min(d[i][j],d[i][k]+d[k][j]);
+                    }
+                }
+            }
+        }
+        while(q--){
+            int x,y;
+            cin>>x>>y;
+            if(x==y){
+                cout<<"0\n";
+                continue;
+            }
+            if(d[x][y]==llmx){
+                cout<<"-1\n";
+            }else{
+                cout<<d[x][y]<<"\n";
+            }
+        }
+    }
+    return 0;
+}
+```
