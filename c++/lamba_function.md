@@ -52,3 +52,8 @@
 **METHOD DEFINITION:**
 --
 -> Lambda body.
+
+
+**Notes:**
+--
+[] means capture nothing, [&] means capture everything that is needed by reference, [=] means capture everything that is needed by value (copy), [&some_variable, some_other_variable, x = y] means capture some_variable by reference and some_other_variable by copy, and capture a copy of y called x
