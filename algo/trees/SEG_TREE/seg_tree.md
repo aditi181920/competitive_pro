@@ -40,6 +40,8 @@ CONSTRUCTION:
 ---> merge the computed values of these children\
 **TIME COMPLEXITY: O(n)**\
 -> the merge operation is constant time (it gets called n times, which is eq to the no. of internal nodes in the seg tree).
+![image](https://user-images.githubusercontent.com/94597499/172373985-cb344e12-06e4-45aa-b6ee-2a505503d487.png)
+
   
 QUERYING SEGMENTS:
 ---
