@@ -236,3 +236,5 @@ def prefix_sum(idx):
 def range_sum(l, r):
     return prefix_sum(r) - prefix_sum(l-1)
 ```      
+
+Note: it is possible to implement a Fenwick tree that can handle arbitrary minimum range queries and arbitrary updates. The paper Efficient Range Minimum Queries using Binary Indexed Trees describes such an approach. However with that approach you need to maintain a second binary indexed trees over the data, with a slightly different structure, since you one tree is not enough to store the values of all elements in the array. The implementation is also a lot harder compared to the normal implementation for sums.
