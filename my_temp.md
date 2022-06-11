@@ -61,6 +61,17 @@ bool cmp(int x,int y){
 }
 multiset<int,decltype(&cmp)> ms(&cmp);
 
+
+// auto cmp=[&](const int &x,const int &y){
+//     return cnt[x]>cnt[y];
+// };
+//multiset<int,decltype(&cmp)> ms(cmp);
+
+struct cmp{
+    bool operator()(const int &x,const int &y) const {return cnt[x]>cnt[y];};
+};
+multiset<int,cmp> ms2;
+
 //---- counting the time taken
 // chrono::time_point<chrono::system_clock> start, end;
 //     start = chrono::system_clock::now();
