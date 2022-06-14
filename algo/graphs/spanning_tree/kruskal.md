@@ -25,7 +25,8 @@
 ---
 
 -> Efficient implementation of this algorithm can be done with the help of DSU\
--> We just need to sort then check check parents for checking components and union for combining them
+-> We just need to sort then check check parents for checking components and union for combining them\
+-> Implementation is super ez
 
 
 **PROBLEM LINKS:**
