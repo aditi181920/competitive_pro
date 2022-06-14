@@ -12,7 +12,8 @@ Of course, we want hash(s) not equal to hash(t) to be very likely if s not equal
 **1. POLYNOMIAL ROLLING HASH FUNCTION:**
 --
 
-//paste1
+![image](https://user-images.githubusercontent.com/94597499/173589160-006e0fc7-aca2-4bf5-8981-099797e1970f.png)
+
 
 -> p a prime number roughly equal to the number of characters in the input alphabet (distinct characters not all).\
 -> m should be large since probability of 2 random strings colliding is about 1/m (some large prime like 10^9+9 is recommended)
@@ -25,6 +26,10 @@ Of course, we want hash(s) not equal to hash(t) to be very likely if s not equal
 --> Probability of generating 2 integers that are unique from each other is ```(n-1)/n```\
 --> Then we have n-2 remaining values , so generating three numbers uniquely is ```((n-1)/n)*((n-2)/n)```\
 --> So the probability of randomly generating k integers that are all unique is: ```((n-1)/n)*((n-2)/n)...*((n-(k-1))/n)```\
---> the above expression is approximately equal to: ```e^((-k *(k-1))/(2*n))```
+--> the above expression is approximately equal to: ```e^((-k *(k-1))/(2*n))```\
+--> the probability of collision occurence:
+![image](https://user-images.githubusercontent.com/94597499/173592653-a0a0331a-697a-4749-9310-0f41838e8f46.png)
+
+![image](https://user-images.githubusercontent.com/94597499/173601621-41d31605-e071-4790-8124-d524affe3656.png)
 
                                                                                                             
