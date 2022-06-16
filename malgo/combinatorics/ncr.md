@@ -82,3 +82,26 @@ ll ncr(ll n, ll r){
 	return ans;
 }
 ```
+
+
+**ncr using modinv:**
+
+``cpp
+ auto calc=[&]{
+            //use mod inverse
+            fact[0]=invf[0]=inv[0]=1;
+            fact[1]=invf[1]=inv[1]=1;
+            for(int i=2;i<lim;i++){
+                fact[i]=(i*fact[i-1])%mod;
+                inv[i]=(((mod-(mod/i))*inv[mod%i]) %mod);
+                invf[i]=((inv[i]*invf[i-1])%mod);
+            }
+        };
+        calc();
+     //   cout<<"ok2\n";
+        auto ncr=[&](ll n,ll r){
+            ll ans=(fact[n]*invf[n-r])%mod;
+            ans=(ans*invf[r])%mod;
+            return ans;
+        };
+	```
