@@ -1,13 +1,13 @@
 RANGE UPDATES (LAZY PROPAGATION)
 --
   
--> modification queries to an entire segment of contiguous elements and perform the query in O(logn)
+-> range modification and range query in O(logn)
 
 1. ADDITION ON SEGMENTS:
 ---
   
   -> add a no. x to all numbers in the segment a[l...r]\
-  -> store at each vertex in the seg tree how many we should add to all no.'s in the correspding segment\
+  -> store at each vertex in the seg tree how many we should add to all no.'s in the corresponding segment\
   -> so we only have to change atmost O(log n) many values not all O(n) values\
   -> answering query: go down tree and add up all the values found along the way which contribute to required segment
   
