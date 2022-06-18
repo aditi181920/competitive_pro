@@ -1,4 +1,4 @@
-**  Center of a graph:**
+**Center of a graph:**
 --
 
 **Remoteness:** Vertex remoteness is distance from its furthest node.\
@@ -6,7 +6,7 @@
 **Theorem:** A center always passes through the diameter
 **Proof:** If c is a center having 2 subtrees with largest depth d1 and d2. So since c is a center d2 can be max d1 and min d2-1. Now if we calculate diameter including c in both cases new diameter comes out to be greater than old. So hence proved.
 
-** Centroid of a graph:**
+**Centroid of a graph:**
 --
 
 **Centroid:** Node when removed minimizes largest remaining component. Centroid may or may not be same as center.
