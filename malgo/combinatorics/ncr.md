@@ -86,7 +86,7 @@ ll ncr(ll n, ll r){
 
 **ncr using modinv:**
 
-``cpp
+```cpp
  auto calc=[&]{
             //use mod inverse
             fact[0]=invf[0]=inv[0]=1;
@@ -104,4 +104,4 @@ ll ncr(ll n, ll r){
             ans=(ans*invf[r])%mod;
             return ans;
         };
-	```
+```
