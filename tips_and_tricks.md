@@ -5,6 +5,8 @@
 ---> if we are doing std range additions then change in x<sub>n</sub>-x<sub>n-1</sub> is zero pts(x<sub>n</sub> and x<sub>n-1</sub> are inside range)\
 ---> similarly let's say we are adding fibonnaci numbers now that is (X<sub>l</sub>=F1, X<sub>l+1</sub>=F2, X<sub>r</sub>=F<sub>r-l+1</sub>) then change in x<sub>n</sub>-x<sub>n-1</sub>-x<sub>n-2</sub> is zero , we can prove this by property of fibonnaci numbers (f<sub>i</sub>=f<sub>i-1</sub>+f<sub>i-2</sub>)\
 -> 0/1 trick: where we can generalise things to 0 and 1 and then solve\
+-> reduce xor,addition to bitwise operations\
+-> whenever we are asked for something related to cyclic permutation, we can most of the time construct an array 2\*n from n sized array and do sliding window
 
 
 
@@ -23,3 +25,4 @@ cautious as well
 -> vector takes more memory and time than array ... prefer array over vectors\
 -> declare variables globally if can\
 -> always pass by reference.. missing this out can actually cause a TLE when it should not\
+
