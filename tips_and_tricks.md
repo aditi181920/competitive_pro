@@ -9,8 +9,8 @@
 -> whenever we are asked for something related to cyclic permutation, we can most of the time construct an array 2\*n from n sized array and do sliding window\
 ->abs(x)=max(-x,x) trick\
 ---> we can expand the abs in this way and this leads to creation of some limited cases in some problems which helps a lot \
----> sample problem: [798 div2](https://codeforces.com/contest/1689/submission/161362525)
-
+---> sample problem: [798 div2](https://codeforces.com/contest/1689/submission/161362525)\
+-> cancelling trick: so there are some problems where we can just manipulate the total weights in some smart way such that we can either check that their sum, parity etc. For example in this problem we can take advantage of node degrees to maintain equality of weights. [CodeTON Round 1 (Div. 1 + Div. 2, Rated, Prizes!)](https://codeforces.com/contest/1656/problem/E)
 
 
 
