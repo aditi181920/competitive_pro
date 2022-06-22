@@ -50,3 +50,12 @@ Using these approaches we can compare substring of length len with all substring
 We can go binary search+hashing\
 Using binary search find first non equal character and result\
 Since hashing is O(1) (precomputed ) and bin search O(logn)
+
+**What if character at a place is changed:**
+--
+In this case whole hashing is not required to be done again\
+if ch1 at index i is changed to ch2 then \
+```sh
+hash_new = hash_old-p^i (ch1) + p^i(ch2)
+```
+
