@@ -8,6 +8,9 @@
 Of course, we want hash(s) not equal to hash(t) to be very likely if s not equal to t.\
 -> Hashing is not 100% deterministically correct, because 2 complete different strings might have the same hash(hashes collide).\
 -> But the probability of this collision is very low so it can be safely ignored.
+![image](https://user-images.githubusercontent.com/94597499/175005414-371cc094-5418-4846-9681-4adee5b48861.png)
+
+
                                                                                                              
 **1. POLYNOMIAL ROLLING HASH FUNCTION:**
 --
