@@ -24,3 +24,14 @@ But we can smartly reduce this complexity down to O(m) using the rules defined a
 1. Start from some losing edge -> we know any edge before this is an winning edge \
 2. If we encouter some node from winning node-> check whether the encountered nodes all adjacencies are winning vertex (can be checked in O(1) using some counters) ) then this is loosing
 3. If some vertices state cannot be defined (useless to do dfs there so we don't proceed further on such nodes)
+
+
+**Example:**
+--
+
+There is a nice example at cp algos .. which in short what it does it:\
+-> Police and theft problem\
+-> so consider initial winning and losing states \
+-> Using the possible moves provided construct a graph from all nodes of the matrix which correponding states they may reflect to when P is there or when T is there\
+-> Now we have graph \
+-> just dfs using the rules and done
