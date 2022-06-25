@@ -30,7 +30,7 @@ struct segment_tree{
     }
     void update(int pos, int val){   //now updating is simple bottom up
         pos+=n;
-        segtree[pos]+=val;
+        segtree[pos]+=val; (add or assign or substract change accordingly)
         pos>>=1;
         while(pos){
             segtree[pos]=join(segtree[pos<<1],segtree[(pos<<1)|1]);
