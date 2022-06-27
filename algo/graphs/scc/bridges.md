@@ -16,7 +16,7 @@ An edge (v,to) is a bridge if none of the descendants of to and to itself has ba
 -> tin[v] be the entry time of node v\
 -> low[v]= min(tin[v],low[p](p is node connected through back edge),low[to](to is adj to v))\
 -> If any low[to]<=tin[v] => there is a back edge\
--> Non bridges will have low[to]>tin[v] always 
+-> Bridges will have low[to]>tin[v] always 
 
 **Terminologies:**
 --
