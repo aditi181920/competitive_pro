@@ -1,6 +1,6 @@
 **DETECTING CYCLE IN A GRAPH:**
 --
-**1. Using dfs (FLOYD ALGO/TORTOISE/HARE ALGORITHM**
+**1. Using dfs **
 
 If we visit a node again in current ongoing depth then there exists a cycle but if we visit visited nodes through different depths then that does not indicate cycle
 ```cpp
@@ -16,6 +16,11 @@ void dfs(vector<vector<int>> &g,vector<int> &visited,int node){
     visited[node]=1;
 }
 ```
+
+**2. FLOYD'S/TORTOISE AND HARE:**
+--
+
+In this algo we suppose that hare moves 2 steps at a time and tortoise moves only 1 step at a time. If there is a cycle then there will be a point where these 2 meet.
 
 CONSTRUCTING CYCLE:
 --
