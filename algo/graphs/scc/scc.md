@@ -31,3 +31,10 @@
  
  -> After creating connected component, find some vertex in each component, to represent that component.\
  -> Then we connect SCC nodes if there exists some edge between any nodes of these SCC.
+
+
+**TARJAN'S ALGORITHM FOR FINDING SCC:**
+--
+
+-> Just like in bridge finding, we maintain entry time (tin) and low link (low) for every vertices\
+-> Now note that SCC all form cycles, and all the nodes of a SCC will have same low link values.. so we can use this fact to implement a cool algorithm.
