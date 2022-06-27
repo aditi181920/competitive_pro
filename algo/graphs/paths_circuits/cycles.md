@@ -1,6 +1,6 @@
 **DETECTING CYCLE IN A GRAPH:**
 --
-**1. Using dfs **
+**1. Using dfs**
 
 If we visit a node again in current ongoing depth then there exists a cycle but if we visit visited nodes through different depths then that does not indicate cycle
 ```cpp
@@ -21,6 +21,21 @@ void dfs(vector<vector<int>> &g,vector<int> &visited,int node){
 --
 
 In this algo we suppose that hare moves 2 steps at a time and tortoise moves only 1 step at a time. If there is a cycle then there will be a point where these 2 meet.
+
+**3. TOP SORT:**
+--
+
+-> If there is any cycle present then top sort can never sort the vertices completely.\
+-> Therefore we can detect cycle.
+
+**Idea for constructing cycles using top sort:**
+--
+
+-> Lets remove all the redudant edges that don't contribute to cycle:\
+-> edges with indegree=0 or outdegree=0\
+-> Now we are only left with a lot of cycles\
+-> Remove the bridges now \
+-> We can detect cycles probably using dfs (keep in mind that still 1 cycle may be composed of many cycles so dfs must be able to return all these cycles.
 
 CONSTRUCTING CYCLE:
 --
@@ -47,3 +62,5 @@ void dfscyc(vector<vector<int>> &g,vector<int> &visited,int node){
 ```
 
 This constructs any one cycle of all the cycles present in the graph
+
+
