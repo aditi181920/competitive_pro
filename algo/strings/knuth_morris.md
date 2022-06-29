@@ -29,3 +29,13 @@ vector<int> prefix_function(string s) {
 -> j=pi[j-1] thing is if current prefix does not match we need to look for smaller prefix with ends with some last characters of current last characters\
 -> if u observe carefully the jumps exactly do that ..\
 -> they minimize the suffix to be matched with precomputed prefixes 
+
+
+**Application:**
+--
+
+-> Find a given substring in a string \
+-> substring+#+string \
+-> now where ever prefix function value becomes n we know it appears there\
+-> complexity: O(n+m)
+
