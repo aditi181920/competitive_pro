@@ -56,3 +56,14 @@ non empty set of vertices and possibly empty set of edges
 -> called handshaking becoz we can state it as if n people shake hands, and the ith person shakes hands d1 times, then the total number of handshakes that take place is (d1+d2+....+dn-1+dn)/2\
 -> A consequence result of this theorem is :\
 -> (d1+d2+d3....+dn) must be even => every graph has an even of odd vertices
+
+
+**FUNCTIONAL GRAPH:**
+--
+-> Graphs having all vertices with outdegree 1 are functional graphs. One of the most useful property is that every component has only 1 cycle.
+
+**PERMUTATION GRAPH:**
+--
+-> Graphs with vertices - elements of vertices, and edges - represent inversions in permutation
+![image](https://user-images.githubusercontent.com/94597499/176885147-3a9efb7f-5045-4cde-9131-fd38dd30f287.png)
+
