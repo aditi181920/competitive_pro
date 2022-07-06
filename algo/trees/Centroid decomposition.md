@@ -92,66 +92,91 @@ int main(){
 **IMPLEMENTATION:**
 --
 ```cpp
-struct centroid {
-  vector<vector<int> > edges;
-  vector<bool> vis;
-  vector<int> par;
-  vector<int> sz;
-  int n;
 
-  void init(int s) {
-    n = s;
-    edges = vector<vector<int> >(n, vector<int>());
-    vis = vector<bool>(n, 0);
-    par = vector<int>(n);
-    sz = vector<int>(n);
-  }
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+#define llu long long unsigned int
+#define ld long double
+#define mp make_pair
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+//-----constants---------------
+const ll big=2000000000;
+const ll inf=10000000;
+ll llmx=1e15;
+ll llmn=-1e15;
+int mn=-1e8;
+int mx=1e8;
+const ll mod =998244353;
+//const ll mod=1000000007;
+ll limit=20000001;
+//const ll N=200005;
+const ld pi=3.1415926535;
 
-  void edge(int a, int b) {
-    edges[a].pb(b);
-    edges[b].pb(a);
-  }
+//------using pragmas------------
+#pragma GCC target ("avx2")
+#pragma GCC optimization ("O3")
+#pragma GCC optimization ("unroll-loops")
 
-  int find_size(int v, int p = -1) {
-    if (vis[v]) return 0;
-    sz[v] = 1;
-
-    for (int x: edges[v]) {
-      if (x != p) {
-        sz[v] += find_size(x, v);
-      }
-    }
-
-    return sz[v];
-  }
-
-  int find_centroid(int v, int p, int n) {
-    for (int x: edges[v]) {
-      if (x != p) {
-        if (!vis[x] && sz[x] > n / 2) {
-          return find_centroid(x, v, n);
-        }
-      }
-    }
-
-    return v;
-  }
-
-  void init_centroid(int v = 0, int p = -1) {
-    find_size(v);
-
-    int c = find_centroid(v, -1, sz[v]);
-    vis[c] = true;
-    par[c] = p;
-
-    for (int x: edges[c]) {
-      if (!vis[x]) {
-        init_centroid(x, c);
-      }
+//-----------------using pbds--------
+#include <ext/pb_ds/assoc_container.hpp> // Common file
+#include <ext/pb_ds/tree_policy.hpp>
+#include <functional> // for less
+using namespace __gnu_pbds;
+ 
+typedef multi_ordered_set tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> multi_set;
+typedef ordered_set tree<int, null_type, less<int>, rb_tree_tag,tree_order_statistics_node_update> ordered_set;
+set<int> g[100005];
+int n;
+vector<vector<int>> centroid;
+vector<map<int,int>> calcdis;
+vector<int> sz,par;
+int cnt=0;
+ void dfs(int node,int p){               //->calculating size of the subtrees through dfs traversal
+  sz[node]=1;
+  cnt+=1;
+  for(auto x:g[node]){
+    if(x!=p){
+      dfs(x,node);
+      sz[node]+=sz[x];
     }
   }
-};
 }
+int find_centroid(int  node,int p){         //-> finding centroid
+  for(auto x:g[node]){
+    if(x==p)continue;
+    if(sz[x]>(cnt/2)){
+      return find_centroid(x,node);
+    }
+  }
+  return node;
+}
+void dfsdistance(int c,int node,int p){
+  for(auto x:g[node]){
+    if(x==p)continue;
+    calcdis[c][x]=calcdis[c][node]+1;
+    dfsdistance(c,x,node);
+  }
+}
+void create(int p,int root){                       //centroid decomposition
+  cnt=0;
+  dfs(root,p);                                     //->subtree sizes
+  int node=find_centroid(root,p);                  //find centroid 
+  if(p!=-1){
+    centroid[p].push_back(node);                   //constructing centroid tree
+    centroid[node].push_back(p);
+  }                                                //now we need to remove every edge of type node->x and x->node removing node to x is easy for x-> node uhm
+  par[node]=p;       
+  dfsdistance(node,node,-1);                  
+  vector<int> ajd(g[node].begin(),g[node].end());                               
+  for(auto x:ajd){ 
+    g[node].erase(x);
+    g[x].erase(node);
+    create(node,x);
+  }
+}
+
 ```
 
 -> the main challenge with centroid decomposition is using this technique to solve different problems
