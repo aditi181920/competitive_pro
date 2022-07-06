@@ -181,6 +181,9 @@ void create(int p,int root){                       //centroid decomposition
 
 -> the main challenge with centroid decomposition is using this technique to solve different problems
 
+**COMPLEXITY:**
+--
+O(nlogn) [logn levels+visiting n nodes in each level]
 **PRACTICE PROBLEM:**
 --
 
