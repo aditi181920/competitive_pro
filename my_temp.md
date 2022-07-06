@@ -36,8 +36,8 @@ const ld pi=3.1415926535;
 #include <functional> // for less
 using namespace __gnu_pbds;
  
-typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> multi_set;
-typedef tree<int, null_type, less<int>, rb_tree_tag,tree_order_statistics_node_update> ordered_set;
+typedef multi_ordered_set tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> multi_set;
+typedef ordered_set tree<int, null_type, less<int>, rb_tree_tag,tree_order_statistics_node_update> ordered_set;
  
 //----------binary exponentiation------
 ll binexp(ll a,ll b){
@@ -55,22 +55,22 @@ ll binexp(ll a,ll b){
 }
 
 //--------set comparator
-bool cmp(int x,int y){
-    if(1) return true;
-    else return false;
-}
-multiset<int,decltype(&cmp)> ms(&cmp);
+// bool cmp(int x,int y){
+//     if(1) return true;
+//     else return false;
+// }
+// multiset<int,decltype(&cmp)> ms(&cmp);
 
 
 // auto cmp=[&](const int &x,const int &y){
 //     return cnt[x]>cnt[y];
 // };
-//multiset<int,decltype(&cmp)> ms(cmp);
+// multiset<int,decltype(&cmp)> ms(cmp);
 
-struct cmp{
-    bool operator()(const int &x,const int &y) const {return cnt[x]>cnt[y];};
-};
-multiset<int,cmp> ms2;
+// struct cmp{
+//     bool operator()(const int &x,const int &y) const {return cnt[x]>cnt[y];};
+// };
+// multiset<int,cmp> ms2;
 
 //---- counting the time taken
 // chrono::time_point<chrono::system_clock> start, end;
@@ -177,5 +177,106 @@ struct fen{
         return ans;
     }
 };
+
+//-----centroid decomposition
+
+set<int> g[100005];
+int n;
+vector<vector<int>> centroid;
+vector<map<int,int>> calcdis;
+vector<int> sz,par;
+int cnt=0;
+int ht,lim;
+void dfs(int node,int p){               //->calculating size of the subtrees through dfs traversal
+  sz[node]=1;
+  cnt+=1;
+  for(auto x:g[node]){
+    if(x!=p){
+      dfs(x,node);
+      sz[node]+=sz[x];
+    }
+  }
+}
+int find_centroid(int  node,int p){         //-> finding centroid
+  for(auto x:g[node]){
+    if(x==p)continue;
+    if(sz[x]>(cnt/2)){
+      return find_centroid(x,node);
+    }
+  }
+  return node;
+}
+void dfsdistance(int c,int node,int p){
+  for(auto x:g[node]){
+    if(x==p)continue;
+    calcdis[c][x]=calcdis[c][node]+1;
+    dfsdistance(c,x,node);
+  }
+}
+void create(int p,int root){                       //centroid decomposition
+  cnt=0;
+  dfs(root,p);                                     //->subtree sizes
+  int node=find_centroid(root,p);                  //find centroid 
+  if(p!=-1){
+    centroid[p].push_back(node);                   //constructing centroid tree
+    centroid[node].push_back(p);
+  }                                                //now we need to remove every edge of type node->x and x->node removing node to x is easy for x-> node uhm
+  par[node]=p;       
+  dfsdistance(node,node,-1);                  
+  vector<int> ajd(g[node].begin(),g[node].end());                               
+  for(auto x:ajd){ 
+    g[node].erase(x);
+    g[x].erase(node);
+    create(node,x);
+  }
+}
+
+//---------------lca temp-----------------
+
+vector<int> tin,tout;
+vector<vector<int>> lca;
+int timer=0;
+int timer=0;
+void calctime(int node,int p){                       //calculate intime and outtimes
+  tin[node]=++timer;
+  for(auto x:centroid[node]){
+    if(x==p)continue;
+    calctime(x,node);
+  }
+  tout[node]=++timer;
+}
+int isancestor(int x,int y){                          //ancestor function
+  if(tin[x]<=tin[y] && tout[x]>=tout[y])return true;
+  else return false;
+}
+int find_lca(int x,int y){                            //lca function
+  if(isancestor(x,y))return x;
+  if(isancestor(y,x))return y;
+  for(int i=lim;i>=0;i--){
+    if(lca[x][i]<=0)continue;
+    if(!isancestor(lca[x][i],y)){
+      x=lca[x][i];
+    }
+  }
+  return lca[x][0];
+}
+int ht=0; //=---> calc and equate this to height of the tree
+int lim=log2(ht)+1;  
+  int main(){
+    for(int i=1;i<=n;i++)lca[i].resize(lim+1);          //calculation for binary uplifting to calculate lca
+  for(int j=0;j<=lim;j++){
+    for(int i=1;i<=n;i++){
+      if(j==0){
+        lca[i][j]=par[i];
+      }else{
+        if(lca[i][j-1]>0){
+          lca[i][j]=lca[lca[i][j-1]][j-1];
+        }
+      }
+    }
+  }
+  }
+
+
 
 ```
