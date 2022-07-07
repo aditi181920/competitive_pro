@@ -39,6 +39,10 @@ using namespace __gnu_pbds;
 typedef multi_ordered_set tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> multi_set;
 typedef ordered_set tree<int, null_type, less<int>, rb_tree_tag,tree_order_statistics_node_update> ordered_set;
  
+ 
+constexpr int md = 998244353;
+using mint = Modular<std::integral_constant<decay<decltype(md)>::type, md>>;
+ 
 //----------binary exponentiation------
 ll binexp(ll a,ll b){
     ll res=1;
