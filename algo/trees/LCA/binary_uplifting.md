@@ -74,5 +74,62 @@ void preprocess(int root) {
 -> Preprocessing: O(nlogn)\
 -> LCA query: O(logn)
 
+**MY IMPLEMENTATION+FINDING DIS USING LCA:**
+--
 
+```cpp
+vector<vector<int>> lca,tr;
+vector<int> dis,tin,tout;
+void dfs_dis(int node, int p){                     //dfs to calculate distance of each node from a root(of centroid tree) in original tree
+  if(p!=-1)dis[node]=dis[p]+1;
+  for(auto x:tr[node]){
+    if(x==p)continue;
+    dfs_dis(x,node);
+  }
+}
+int timer=0;
+void calctime(int node,int p){   //cout<<"node:"<<node<<"\n";                    //calculate intime and outtimes
+  tin[node]=++timer;
+  lca[node][0]=p;
+  for(int i=1;i<=lim;i++){ //cout<<"i:"<<i<<" "<<lca[node][i-1]<<"\n";
+    lca[node][i]=lca[lca[node][i-1]][i-1];
+  }
+  for(auto x:tr[node]){
+    if(x==p)continue;
+    calctime(x,node);
+  }
+  tout[node]=++timer;
+}
+int isancestor(int x,int y){                          //ancestor function
+  if(tin[x]<=tin[y] && tout[x]>=tout[y])return true;
+  else return false;
+}
+int find_lca(int x,int y){                            //lca function
+  if(isancestor(y,x))return y;
+  if(isancestor(x,y))return x;
+  for(int i=lim;i>=0;i--){
+    if(!isancestor(lca[x][i],y)){
+      x=lca[x][i];
+    }
+  }
+  return lca[x][0];
+}
+int dista(int x,int y){                  //finding this is dis[x]+dis[y]-dis[lca[x,y]]-dis[lca[x,y]]
+  int calc=dis[x]+dis[y];
+  int lcca=find_lca(x,y); 
+  calc-=2*dis[lcca];
+  return calc;
+}
+int main(){
+  dis.resize(n+1);
+  dfs_dis(root,-1);    
+  for(int i=0;i<=n;i++)lca[i].resize(lim+1,0);          //calculation for binary uplifting to calculate lca
+  calctime(root,root);                                //-> parent must be same initially otherwise lca will be wrong why -1 does not work though?well it will work but we have to put extra conditions to handle negatives
+}
+```
+
+**PROBLEM LINKS:**
+---
+
+[XENIA AND TREES](https://codeforces.com/contest/342/problem/E)
 
