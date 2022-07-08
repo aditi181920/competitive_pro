@@ -136,16 +136,18 @@ int cnt=0;
  void dfs(int node,int p){               //->calculating size of the subtrees through dfs traversal
   sz[node]=1;
   cnt+=1;
-  for(auto x:g[node]){
+  for(auto x:tr[node]){
     if(x!=p){
+      if(vis[x])continue;
       dfs(x,node);
       sz[node]+=sz[x];
     }
   }
 }
 int find_centroid(int  node,int p){         //-> finding centroid
-  for(auto x:g[node]){
+  for(auto x:tr[node]){
     if(x==p)continue;
+    if(vis[x])continue;
     if(sz[x]>(cnt/2)){
       return find_centroid(x,node);
     }
@@ -155,6 +157,7 @@ int find_centroid(int  node,int p){         //-> finding centroid
 void dfsdistance(int c,int node,int p){
   for(auto x:g[node]){
     if(x==p)continue;
+    if(vis[x])continue;
     calcdis[c][x]=calcdis[c][node]+1;
     dfsdistance(c,x,node);
   }
@@ -168,13 +171,13 @@ void create(int p,int root){                       //centroid decomposition
     centroid[node].push_back(p);
   }                                                //now we need to remove every edge of type node->x and x->node removing node to x is easy for x-> node uhm
   par[node]=p;       
+  vis[node]=true;
   dfsdistance(node,node,-1);                  
-  vector<int> ajd(g[node].begin(),g[node].end());                               
-  for(auto x:ajd){ 
-    g[node].erase(x);
-    g[x].erase(node);
+  vis[node]=1;
+  for(auto x:tr[node]){
+    if(vis[x])continue;
     create(node,x);
-  }
+  }    
 }
 
 ```
