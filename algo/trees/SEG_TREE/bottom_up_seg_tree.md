@@ -107,3 +107,4 @@ Bottom up implementation does not maintain the order of the segments while query
 2. Bottom up approach is inflexible compared to top down. Many tricks like persistant tree cannot be implementated here.
   
   
+[my submission for bottom up segtree at cf](https://codeforces.com/contest/622/submission/161026758)
