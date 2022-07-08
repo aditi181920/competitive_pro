@@ -248,14 +248,16 @@ void create(int p,int root){                       //centroid decomposition
 }
 
 //---------------lca temp-----------------
-
-vector<int> tin,tout;
-vector<vector<int>> lca;
+vector<vector<int>> lca,tr;
+vector<int> dis,tin,tout;
 int timer=0;
-int timer=0;
-void calctime(int node,int p){                       //calculate intime and outtimes
+void calctime(int node,int p){   //cout<<"node:"<<node<<"\n";                    //calculate intime and outtimes
   tin[node]=++timer;
-  for(auto x:centroid[node]){
+  lca[node][0]=p;
+  for(int i=1;i<=lim;i++){ //cout<<"i:"<<i<<" "<<lca[node][i-1]<<"\n";
+    lca[node][i]=lca[lca[node][i-1]][i-1];
+  }
+  for(auto x:tr[node]){
     if(x==p)continue;
     calctime(x,node);
   }
@@ -266,33 +268,19 @@ int isancestor(int x,int y){                          //ancestor function
   else return false;
 }
 int find_lca(int x,int y){                            //lca function
-  if(isancestor(x,y))return x;
   if(isancestor(y,x))return y;
+  if(isancestor(x,y))return x;
   for(int i=lim;i>=0;i--){
-    if(lca[x][i]<=0)continue;
     if(!isancestor(lca[x][i],y)){
       x=lca[x][i];
     }
   }
   return lca[x][0];
 }
-int ht=0; //=---> calc and equate this to height of the tree
-int lim=log2(ht)+1;  
-  int main(){
-    for(int i=1;i<=n;i++)lca[i].resize(lim+1);          //calculation for binary uplifting to calculate lca
-  for(int j=0;j<=lim;j++){
-    for(int i=1;i<=n;i++){
-      if(j==0){
-        lca[i][j]=par[i];
-      }else{
-        if(lca[i][j-1]>0){
-          lca[i][j]=lca[lca[i][j-1]][j-1];
-        }
-      }
-    }
-  }
-  }
-
-
+int main(){
+  dfs_dis(root,-1);    
+  for(int i=0;i<=n;i++)lca[i].resize(lim+1,0);          //calculation for binary uplifting to calculate lca
+  calctime(root,root);                                //-> parent must be same initially otherwise lca will be wrong why -1 does not work though?well it will work but we have to put extra conditions to handle negatives
+}
 
 ```
