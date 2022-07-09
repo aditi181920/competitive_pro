@@ -111,5 +111,9 @@ int main(){
 ```
 [CSES COMPANY QUERIES](https://cses.fi/problemset/task/1688)
 
+**BLOGS:**
+--
+
+[CF BY ALexLuchianov](https://codeforces.com/blog/entry/100826)
 
 
