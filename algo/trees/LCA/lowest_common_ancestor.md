@@ -110,3 +110,6 @@ int main(){
 
 ```
 [CSES COMPANY QUERIES](https://cses.fi/problemset/task/1688)
+
+
+
