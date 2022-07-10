@@ -68,3 +68,41 @@ class C: public virtual A {
 
 -> A pure virtual function is a function that does nothing which means that you can declare a pure virtual function in the base class that does not have a description in the base class.\
 -> But it is necessary to override these functions in derived classes otherwise they become abstract 
+
+
+**Virtual methods:**
+--
+
+-> We can override virtual methods with the help of derived classes
+```cpp
+#include <iostream>
+using namespace std;
+class A
+{
+    public:
+    virtual void raw()
+    {
+      cout << "Base Function" << endl;
+    }
+};
+
+class B : public A
+{
+    public:
+    void raw()
+    {
+      cout << "Derived Function" << endl;
+    }
+};
+
+int main(void)
+{
+  B obj;
+  obj.raw();
+  return 0;
+}
+
+Output: derived functions
+```
+-> Can be used in both abstract and non abstract classes\
+-> Not necessary to override virtual functions (pure virtuals are necessary to override)
