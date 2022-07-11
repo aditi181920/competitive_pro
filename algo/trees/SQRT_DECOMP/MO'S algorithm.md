@@ -41,3 +41,4 @@ bool cmp(array<int,3>x,array<int,3>y)
 **PROBLEM LINKS:**
 ---
 [ABC 238 G](https://atcoder.jp/contests/abc238/tasks/abc238_g?lang=en)
+[CSES DISTINCT VALUE QUERIES](https://cses.fi/problemset/task/1734/)
