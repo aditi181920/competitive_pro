@@ -8,3 +8,8 @@
 
 -> These are usually applied in places where we wanna know next smaller,prev smaller (by maintaing increasing seq) or next larger,prev larger element (by maintaing decreasing seq)
  
+
+Problem links:
+--
+
+[LC BW 82 D](https://leetcode.com/contest/biweekly-contest-82/problems/subarray-with-elements-greater-than-varying-threshold/)
