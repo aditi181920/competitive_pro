@@ -28,4 +28,4 @@ cautious as well
 -> vector takes more memory and time than array ... prefer array over vectors\
 -> declare variables globally if can\
 -> always pass by reference.. missing this out can actually cause a TLE when it should not\
-
+-> constant factor for  maps are too big therefore coordinate compress if you can
