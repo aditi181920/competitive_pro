@@ -31,7 +31,60 @@
  
  -> After creating connected component, find some vertex in each component, to represent that component.\
  -> Then we connect SCC nodes if there exists some edge between any nodes of these SCC.
+```cpp
 
+struct scc{
+  vector<vector<int>> g,comp,r;
+  vector<int> order,who,vis;
+  int cnt=0;
+  int n;
+  void init(int n){
+    this->n=n;
+    g.resize(n+1);
+    comp.resize(n+1);
+    who.resize(n+1,0);
+    vis.resize(n+1,0);
+    r.resize(n+1);
+  }
+  void add(int x,int y){
+    g[x].push_back(y);
+    r[y].push_back(x);
+  }
+  void topsort(int node){
+    vis[node]=true;
+    for(auto x:g[node]){
+      if(vis[x])continue;
+      topsort(x);
+    }
+    order.push_back(node);
+  }
+  void dfs_scc(int node){
+    vis[node]=true;
+    comp[cnt].push_back(node);
+    who[node]=cnt;
+    for(auto x:r[node]){
+      if(vis[x])continue;
+      dfs_scc(x);
+    }
+  }
+  void build(){
+    for(int i=1;i<=n;i++){
+      if(!vis[i]){
+        topsort(i);
+      }
+    }
+    vis.assign(n+1,false);
+    for(int i=n-1;i>=0;i--){
+      int x=order[i];
+      if(!vis[x]){
+        dfs_scc(x);
+        cnt+=1;
+      }
+    }
+  }
+
+};
+```
 
 **TARJAN'S ALGORITHM FOR FINDING SCC:**
 --
