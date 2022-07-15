@@ -140,3 +140,5 @@ void dijkstra(int s, vector<int> & d, vector<int> & p) {
 
 -> We can modify our algorithm for finding second smallest distance as well\
 -> And the only thing we gotta do for this to work is that we relax every node 2 times.. in this way we pass first smallest and second smallest distances
+
+[ABC 245 G](https://atcoder.jp/contests/abc245/tasks/abc245_g?lang=en)
