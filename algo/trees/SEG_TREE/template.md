@@ -173,3 +173,207 @@ struct segt{
 **PROBLEM LINKS:**\
 
 [CC JAN LT 2022 DIV2](https://www.codechef.com/LTIME104B/problems/CIRCPRMRCVRY)
+
+
+**SEG TREE FINDING FIRST ELEMENT ON LEFT AND RIGHT WITH SOME CONDITION:**
+--
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define ld long double 
+#define mp make_pair
+#define fast_io ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
+//-----constants---------------
+ll llmx=1e15;
+ll llmn=-1e15;
+const ll mod =998244353;
+//const ll mod=1000000007;
+//const int N = 5e5 + 5;
+const int SN = 1 << 20;
+const long long inf = 1e16 + 16;
+//-----containers--------------
+ 
+template<typename T>
+struct segt{
+    struct node{         //->seg node
+        T mx=0,mn=0,lzy=0;
+        void apply(T v){
+            mn+=v;
+            mx+=v;
+            lzy+=v;
+        }
+    };
+    node merge(const node&x, const node&y){   //->merging nodes
+        node ans;
+        ans.mn=min(x.mn,y.mn);
+        ans.mx=max(x.mx,y.mx);
+        return ans;
+    }
+    vector<node> seg;
+    int n;
+    void init(int n){                 //->initialize and build
+        this->n=n;
+        seg.resize(2*n-1);  
+        build(0,0,n-1);  
+    }
+    void init(int n,vector<T> &a){
+        this->n=n;
+        seg.resize(2*n-1);
+        build(0,0,n-1,a);
+    }
+    void push(int x,int l,int r){           //pushing the information down the tree
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        if(seg[x].lzy!=0){
+            seg[x+1].apply(seg[x].lzy);
+            seg[z].apply(seg[x].lzy);
+            seg[x].lzy=0;
+        }
+    }
+    void pull(int x,int z){                     //merging the child values at parent
+        seg[x]=merge(seg[x+1],seg[z]);
+    }
+    void build(int x,int l,int r){// cout<<"x:"<<x<<"  l:"<<l<<" r:"<<r<<"\n";
+        if(l==r){
+            return; //we are building empty segtree 
+        }
+        int y=(l+r)>>1;
+        int z=(x+((y-l+1)<<1));
+        build(x+1,l,y);
+        build(z,y+1,r);
+        pull(x,z);
+    }
+    void build(int x,int l,int r,vector<T> &a){
+        if(l==r){
+            seg[x].apply(a[l]);
+            return;
+        }
+        int y=(l+r)>>1;
+        int z=(x+((y-l+1)<<1));
+        build(x+1,l,y,a);
+        build(z,y+1,r,a);
+        pull(x,z);
+    }
+    node get(int x,int l,int r,int ql,int qr){   //query function for seg tree
+        if(ql<=l && r<=qr){
+            return seg[x];
+        }
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        push(x,l,r);
+        node res;
+        if(qr<=y){
+            res=get(x+1,l,y,ql,qr);
+        }else if(ql>y){
+            res=get(z,y+1,r,ql,qr);
+        }else{
+            res=merge(get(x+1,l,y,ql,min(qr,y)),get(z,y+1,r,max(ql,y+1),qr));
+        }
+        pull(x,z);
+        return res;
+    }
+    node get(int l,int r){
+        return get(0,0,n-1,l,r);
+    }
+    node get(int p){
+        return get(0,0,n-1,p,p);
+    }
+     void modify(int x,int l,int r,int ql,int qr,T v){       //modify function for segtree
+        if(ql<=l && r<=qr){
+            seg[x].apply(v);
+            return;
+        }
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        push(x,l,r);
+        node res;
+        if(ql<=y){
+            modify(x+1,l,y,ql,min(y,qr),v);
+        }
+        if(qr>y){
+            modify(z,y+1,r,max(y+1,ql),qr,v);
+        }
+        pull(x,z);
+    }
+    void modify(int l,int r,T v){
+        modify(0,0,n-1,l,r,v);
+    }
+    int go1(int x,int l,int r,const function<bool(const node&)> &f){   //finding first element that satisfies condition
+        if(l==r)return l;
+        push(x,l,r);
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        int res;
+        if (f(seg[x+1])) {
+        res =go1(x+1,l,y,f);
+        } else {
+        res =go1(z,y+1,r,f);
+        }
+        pull(x,z);
+        return res;
+    }
+    int find_first(int x,int l,int r,int ql,int qr,const function<bool(const node&)>&f){  //find leftmost candidate seg that may have it
+        if(ql<=l && r<=qr){
+            if(!f(seg[x]))return -1;
+            return go1(x,l,r,f);
+        }
+        push(x,l,r);
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        int res=-1;
+        if(ql<=y){
+            res=find_first(x+1,l,y,ql,qr,f);
+        }
+        if(qr>y && res==-1){
+            res=find_first(z,y+1,r,ql,qr,f);
+        }
+        pull(x,z);
+        return res;
+    }
+    int ff(int l,int r,const function<bool(const node&)> &f){
+        return find_first(0,0,n-1,l,r,f);
+    }
+    int go2(int x,int l,int r,const function<bool(const node&)> &f){
+        if(l==r)return l;
+        push(x,l,r);
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        int res;
+        if (f(seg[z])) {
+        res =go2(z,y+1,r,f);
+        } else {
+        res =go2(x+1,l,y,f);
+        }
+        pull(x,z);
+        return res;
+    }
+    int find_last(int x,int l,int r,int ql,int qr,const function<bool(const node&)>&f){
+        if(ql<=l && r<=qr){
+            if(!f(seg[x]))return -1;
+            return go2(x,l,r,f);
+        }
+        push(x,l,r);
+        int y=(l+r)>>1;
+        int z=x+((y-l+1)<<1);
+        int res=-1;
+        if(qr>y){
+            res=find_first(z,y+1,r,ql,qr,f);
+        }
+        if(ql<=y && res==-1){
+            res=find_first(x+1,l,y,ql,qr,f);
+        }
+        pull(x,z);
+        return res;
+    }
+    int fl(int l,int r,const function<bool(const node&)> &f){
+        return find_last(0,0,n-1,l,r,f);
+    }
+};
+```
+
+**PROBLEM LINK**
+--
+
+[CF 807 DIV2](https://codeforces.com/contest/1705/problem/E)
