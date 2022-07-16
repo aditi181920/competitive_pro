@@ -193,4 +193,5 @@ O(nlogn) [logn levels+visiting n nodes in each level]
 --
 
 [CF 199 DIV2](https://codeforces.com/contest/342/problem/E)\
-[IOI 2011 RACE](https://oj.uz/problem/view/IOI11_race)
+[IOI 2011 RACE](https://oj.uz/problem/view/IOI11_race)\
+[CC PRIMEDST](https://www.codechef.com/problems/PRIMEDST?tab=statement)
