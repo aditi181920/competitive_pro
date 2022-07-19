@@ -39,3 +39,5 @@ void dfs(int v, int p, bool keep){
 
 
 ```
+
+Note: HLDA uses the same concept of light and heavy weight edges. The difference i
