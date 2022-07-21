@@ -73,3 +73,19 @@
 -> mex is like a promise=> if G(p)=g then every 0-g-1 is in the list of valid moves from p\
 -> Imagine transforming every pile in our game was transformed from having p stones but with weird rules, to G(p)=g stones but with normal Nim rules\
 -> In nim we can transform from p stones to pile with size less than p
+
+
+**Notes:**
+--
+```sh
+-> If u have several piles of nim, this is equivalent to single pile of Nim of *(x^y^z^..) 
+-> we have some game position P where the options are to move to one of several possible Nim-heaps, and M is the smallest Nim-heap that is not among the options. Then P = ∗M.
+-> because *p has the same options as *m has 
+-> if u have winning strategy in *m then u have winning strategy in *p
+-> if opposite move in *p and remaining pile is > *m then u can make the pile =*m and pretend nothing happended
+-> if remaining pile <*m then extra things can be considered redundant u only removed from pile of size *m
+-> If all the legal moves from a position P are equivalent to Nim-heaps of sizes {s1, ..., sk}, then P itself is equivalent to a nim-heap of size MEX(s1, ..., sk)
+```
+
+[Good notes](https://blog.plover.com/math/sprague-grundy.html)
+
