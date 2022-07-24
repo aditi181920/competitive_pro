@@ -60,27 +60,36 @@ struct segment_tree{
         r+=n;
         while(l<=r){
         if(l&1){
-          aux[l]=join(segtree[l],v);
+          segtree[l]=join(segtree[l],v);
           l++;
         }
         if(!(r&1)){
-          aux[r]=join(segtree[r],v);
+          segtree[r]=join(segtree[r],v);
           r--;
         }
         l>>=1;
         r>>=1;
     }
-    int querypt(int p) {
-        int res = t[p+n];
-        for (p += n; p > 0; p >>= 1) res = join(res,aux[p]);
-        return res;
+    void modify(int l, int r, int value) {            //above modify is written by me,,, this modify is taken but still needs testing
+      for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+        if (l&1) segtree[l++] += value;
+        if (!(r&1)) segtree[--r] += value;
       }
-      void push() {
+    }
+
+      void push() {                     //this pushes the modified values of the segment to the leaves 
         for (int i = 1; i < n; ++i) {
-          t[i<<1] += aux[i];
-          t[i<<1|1] += aux[i];
-          aux[i] = 0;
+          segtree[i<<1] += segtree[i];
+          segtree[i<<1|1] += segtree[i];
+          segtree[i] = 0;
         }
+      }
+      //note that this modify range operation is done in O(nlogn) ... we could have done this in O(n) instead by just using build  
+      
+    int querypt(int p) {
+        int res = segtree[p+n];
+        for (p += n; p > 0; p >>= 1) res = join(res,segtree[p]);
+        return res;
       }
     int& operator[](int idx){     //accessing seg[i+x] using seg[i] 
         return segtree[idx + n];
@@ -92,9 +101,14 @@ struct segment_tree{
 --
   
 1. Non-commutative combiner function:\
-Bottom up implementation does not maintain the order of the segments while querying segments. Therefore any join function which is non-commutative in nature will not work correctly.\
+The modify function discussed above does not maintain the order of the segments while querying segments. Therefore any join function which is non-commutative in nature will not work correctly.\
 **Workaround:** When we are checking for l it goes left to right in order and similarly for r it goes right to left in order. So we can do these operations separately and merge in the end.
 ```cpp
+  void modify(int p, const S& value) {
+  for (t[p += n] = value; p >>= 1; ) t[p] = combine(t[p<<1], t[p<<1|1]);
+}
+  --> modify function works from left to right and query as well 
+  
   S query(int l, int r) {
   S resl, resr;
   for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
@@ -105,6 +119,13 @@ Bottom up implementation does not maintain the order of the segments while query
 }
 ```
 2. Bottom up approach is inflexible compared to top down. Many tricks like persistant tree cannot be implementated here.
+
   
   
 [my submission for bottom up segtree at cf](https://codeforces.com/contest/622/submission/161026758)
+
+
+**LAZY PROPOGATION:**
+--
+
+
