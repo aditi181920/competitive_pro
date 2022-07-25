@@ -31,4 +31,20 @@ edge (u,p[v]) is a bridge iff dp[u]=0
 -> A cactus is a graph where every edge (or sometimes, vertex) belongs to at most one simple cycle. The first case is called an edge cactus, the second case is a vertex cactus.\
 
 -> You are given a connected vertex cactus with N vertices. Answer queries of the form "how many distinct simple paths exist from vertex p to vertex q?".\
--> 
+-> Since atmost 1 simple cycle in a cactus...therefore there exists like 2 different paths through a cacuts ... so if we know the number of cactuses in the path from a root we can find it easily using lca.\
+-> The main part about this problem is compressing cactus nodes... which is easy to be done using the concept of back edges
+
+
+**BIPARTITE GRAPH:**
+--
+
+-> This problem we can remove only 1 edge to make a graph bipartite is it is not. Again use back edges:)
+
+
+**DIRECETD GRAPH:**
+--
+
+-> Edges visited in dfs traversal are tree/span edges\
+-> Edges going from child to its ancestor is back edge\
+-> Edges going from some node to its descendant is forward edge\
+-> Edge between two nodes such that none is ancestor or descendant is cross edge
