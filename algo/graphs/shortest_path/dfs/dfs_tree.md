@@ -48,3 +48,10 @@ edge (u,p[v]) is a bridge iff dp[u]=0
 -> Edges going from child to its ancestor is back edge\
 -> Edges going from some node to its descendant is forward edge\
 -> Edge between two nodes such that none is ancestor or descendant is cross edge
+
+
+**PROBLEM LINKS:**
+--
+
+[CF BETA 19](https://codeforces.com/contest/19/problem/E)
+[CF 143 DIV2](https://codeforces.com/contest/231/problem/E)
