@@ -1,4 +1,4 @@
-
+```cpp
 #include <bits/stdc++.h>
 using namespace std;
 #define ll long long int
@@ -26,3 +26,4 @@ template <typename T> T degtorad(T a){
 pair<ld,ld> polar(ld rad,ld theta){
   return {rad*cos(theta),rad*sin(theta)};
 }
+```
