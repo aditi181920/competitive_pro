@@ -54,7 +54,7 @@ struct fen{
 
 ```
 
-```
+```cpp
  //2d fenwick tree
     ll bits[1005][1005];
 void add(int ht,int wt){
