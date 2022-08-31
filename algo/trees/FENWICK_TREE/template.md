@@ -48,7 +48,14 @@ struct fen{
     }
     
     
-    //2d fenwick tree
+   
+
+};
+
+```
+
+```
+ //2d fenwick tree
     ll bits[1005][1005];
 void add(int ht,int wt){
     //to add something with height and weight
@@ -75,9 +82,6 @@ ll queryrange(int x,int y,int x1,int y1){
     ans+=query(x,y);
     return ans;
 }
-
-};
-
 ```
 
 **PROBLEM LINKS**
