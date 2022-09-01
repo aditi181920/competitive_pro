@@ -27,3 +27,4 @@
 SOURCE: [this](https://codeforces.com/blog/entry/66660)
     
     
+3. Note that copying string that is assigning is also linear 
