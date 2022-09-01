@@ -8,7 +8,7 @@
 
 
 -> Given string abbaba, then its dfa must be:
-
+![image](https://user-images.githubusercontent.com/94597499/187903136-566e45d2-44c8-46b7-8a6e-f867cf7fccda.png)
 
 
 -> Now the trivial algorithm for building this automaton is just:
@@ -79,3 +79,8 @@ void compute_automaton(string s, vector<vector<int>>& aut) {
 
 Complexity: O(n*|alphabet|)
 ```
+
+**PROBLEM LINKS:**
+--
+
+[EDU 134 DIV 2](https://codeforces.com/contest/1721/problem/E)
