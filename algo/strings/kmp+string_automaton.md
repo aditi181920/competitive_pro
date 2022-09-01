@@ -59,7 +59,7 @@ Note: We can find kmp separately in this problem and then do this string automat
 Notice the similarity in kmp and building this automaton, it is the same property -> finding longest prefix such that it is the suffix \
 -> Now abuse this property to calculate kmp using dfa as well
 
-```
+```cpp
 
 void compute_automaton(string s, vector<vector<int>>& aut) {
     s += '#';
