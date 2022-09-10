@@ -29,3 +29,13 @@ cautious as well
 -> declare variables globally if can\
 -> always pass by reference.. missing this out can actually cause a TLE when it should not\
 -> constant factor for  maps are too big therefore coordinate compress if you can
+
+
+
+**INCREASING STACK SIZE:**
+--
+
+```
+g++ -O2 -std=c++17 -Wall -Wl,--stack=268435456  file_name.cpp -o file_name
+./file_name
+``
