@@ -3,7 +3,7 @@
 
 If for every vertex (u,v) such that there is an edge from u to v, u appears before v in the sorted sequence then the sequence is the topological sort.\
 It is not unique.\
-It may not exist at all if graph contains cycle.
+It may not exist at all if graph contains cycle therefore only on DAG's.
 
 **1. Using dfs**
 
