@@ -74,7 +74,7 @@ struct scc{
       }
     }
     vis.assign(n+1,false);
-    for(int i=n-1;i>=0;i--){
+    for(int i=order.size()-1;i>=0;i--){
       int x=order[i];
       if(!vis[x]){
         dfs_scc(x);
